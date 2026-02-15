@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پشواک - فروشگاه آنلاین</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--primary:#1a1a2e;--secondary:#16213e;--accent:#e94560;--accent2:#0f3460;
+--gold:#d4a574;--gold-light:#e8c9a0;--bg:#fafafa;--card:#fff;
+--text:#1a1a2e;--text-light:#666;--border:#e0e0e0;--shadow:0 2px 20px rgba(0,0,0,.08);
+--radius:12px;--transition:all .3s cubic-bezier(.4,0,.2,1);
+--btn-primary:#1a1a2e;--btn-primary-text:#fff;
+--cat-shoe:#667eea;--cat-cloth:#f093fb;--cat-bag:#4facfe;
+}
+body{font-family:'Vazirmatn',Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit;border:none;outline:none}
+input,select,textarea{font-family:inherit;outline:none}
+.container{max-width:1280px;margin:0 auto;padding:0 20px}
+
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#f1f1f1}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+
+/* Header */
+.header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:var(--transition)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:20px}
+.logo{font-size:28px;font-weight:900;color:var(--primary);letter-spacing:-1px}
+.logo span{color:var(--gold)}
+.nav{display:flex;gap:8px;align-items:center}
+.nav a,.nav button{padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;transition:var(--transition);background:none;color:var(--text)}
+.nav a:hover,.nav button:hover{background:var(--primary);color:#fff}
+.nav-icons{display:flex;gap:12px;align-items:center}
+.nav-icon{position:relative;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f5f5f5;transition:var(--transition);cursor:pointer;border:none}
+.nav-icon:hover{background:var(--primary);color:#fff;transform:scale(1.1)}
+.nav-icon .badge{position:absolute;top:-2px;right:-2px;background:var(--accent);color:#fff;font-size:11px;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
+.mobile-menu-btn{display:none;background:none;border:none;font-size:24px;cursor:pointer}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 50%,var(--accent2) 100%);color:#fff;padding:80px 0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(212,165,116,.15) 0%,transparent 70%);animation:heroGlow 6s ease-in-out infinite}
+.hero::after{content:'';position:absolute;bottom:-30%;left:-30%;width:80%;height:80%;background:radial-gradient(circle,rgba(233,69,96,.1) 0%,transparent 60%);animation:heroGlow 8s ease-in-out infinite reverse}
+@keyframes heroGlow{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,30px)}}
+.hero-content{position:relative;z-index:1;text-align:center}
+.hero h1{font-size:52px;font-weight:900;margin-bottom:16px;text-shadow:0 4px 20px rgba(0,0,0,.3);animation:heroTitle 1s ease-out}
+@keyframes heroTitle{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:20px;opacity:.9;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto;animation:heroTitle 1s ease-out .2s both}
+.hero-btn{display:inline-block;padding:16px 48px;background:var(--gold);color:var(--primary);font-size:18px;font-weight:700;border-radius:50px;transition:var(--transition);border:none;animation:heroTitle 1s ease-out .4s both}
+.hero-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(212,165,116,.4)}
+
+/* Live Stats Bar */
+.live-stats-bar{background:linear-gradient(90deg,var(--primary),var(--accent2));padding:16px 0;border-bottom:2px solid var(--gold)}
+.live-stats-inner{display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.live-stat{text-align:center;color:#fff}
+.live-stat .stat-number{font-size:28px;font-weight:900;color:var(--gold);display:block}
+.live-stat .stat-text{font-size:13px;opacity:.8}
+@keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.live-stat{animation:countUp .6s ease-out both}
+.live-stat:nth-child(2){animation-delay:.15s}
+.live-stat:nth-child(3){animation-delay:.3s}
+.live-stat:nth-child(4){animation-delay:.45s}
+
+/* Section */
+.section{padding:60px 0}
+.section-title{text-align:center;margin-bottom:40px}
+.section-title h2{font-size:32px;font-weight:800;color:var(--primary)}
+.section-title p{color:var(--text-light);margin-top:8px}
+.section-title::after{content:'';display:block;width:60px;height:4px;background:var(--gold);margin:12px auto 0;border-radius:2px}
+
+/* Categories */
+.categories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cat-card{position:relative;height:250px;border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:var(--transition)}
+.cat-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 40px rgba(0,0,0,.2)}
+.cat-card-bg{width:100%;height:100%;transition:var(--transition)}
+.cat-card:hover .cat-card-bg{transform:scale(1.1)}
+.cat-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);display:flex;align-items:flex-end;padding:24px;transition:var(--transition)}
+.cat-card:hover .cat-card-overlay{background:linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.2))}
+.cat-card-overlay h3{color:#fff;font-size:24px;font-weight:700;transition:var(--transition);transform:translateY(0)}
+.cat-card:hover .cat-card-overlay h3{transform:translateY(-5px)}
+
+/* Product Card */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px}
+.product-card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:var(--transition);position:relative;animation:cardIn .5s ease-out both}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.product-card:hover{transform:translateY(-8px);box-shadow:0 12px 35px rgba(0,0,0,.15)}
+.product-card-img{position:relative;height:280px;overflow:hidden;background:#f0f0f0}
+.product-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.product-card:hover .product-card-img img{transform:scale(1.08)}
+.product-discount-badge{position:absolute;top:12px;right:12px;background:var(--accent);color:#fff;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:700;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.product-fav-btn{position:absolute;top:12px;left:12px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;transition:var(--transition);font-size:16px}
+.product-fav-btn:hover,.product-fav-btn.active{background:var(--accent);color:#fff;transform:scale(1.15)}
+.product-card-body{padding:16px}
+.product-card-cat{font-size:12px;color:var(--gold);font-weight:600;margin-bottom:4px}
+.product-card-title{font-size:16px;font-weight:700;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.product-card-rating{display:flex;gap:2px;margin-bottom:8px;color:var(--gold);font-size:14px}
+.product-card-price{display:flex;align-items:center;gap:8px}
+.price-current{font-size:18px;font-weight:800;color:var(--primary)}
+.price-old{font-size:14px;color:#999;text-decoration:line-through}
+.product-card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.add-cart-btn{padding:8px 20px;background:var(--btn-primary);color:var(--btn-primary-text);border-radius:8px;font-size:13px;font-weight:600;transition:var(--transition);border:none}
+.add-cart-btn:hover{background:var(--gold);color:var(--primary);transform:scale(1.05)}
+.product-sales{font-size:12px;color:var(--text-light)}
+
+/* Filters */
+.filters-bar{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px;align-items:center}
+.filter-group{display:flex;align-items:center;gap:8px}
+.filter-group label{font-size:14px;font-weight:600}
+.filter-group select,.filter-group input{padding:8px 16px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:#fff;transition:var(--transition)}
+.filter-group select:focus,.filter-group input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,165,116,.15)}
+.search-input{flex:1;min-width:200px;padding:10px 20px;border:1px solid var(--border);border-radius:8px;font-size:14px;transition:var(--transition)}
+.search-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,165,116,.15)}
+
+/* Single Product */
+.single-product{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:40px 0}
+.sp-gallery{position:relative}
+.sp-main-img{width:100%;height:500px;object-fit:cover;border-radius:var(--radius);background:#f0f0f0;transition:var(--transition)}
+.sp-main-img:hover{transform:scale(1.02)}
+.sp-info h1{font-size:28px;font-weight:800;margin-bottom:12px}
+.sp-category{color:var(--gold);font-weight:600;margin-bottom:16px}
+.sp-rating{display:flex;gap:4px;color:var(--gold);margin-bottom:16px;font-size:18px}
+.sp-price-box{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.sp-price{font-size:32px;font-weight:900;color:var(--primary)}
+.sp-old-price{font-size:20px;color:#999;text-decoration:line-through}
+.sp-discount{background:var(--accent);color:#fff;padding:4px 12px;border-radius:20px;font-size:14px;font-weight:700}
+.sp-desc{color:var(--text-light);margin-bottom:24px;line-height:2}
+.sp-sizes{margin-bottom:24px}
+.sp-sizes h4{margin-bottom:12px;font-weight:700}
+.sizes-list{display:flex;gap:8px;flex-wrap:wrap}
+.size-btn{padding:8px 20px;border:2px solid var(--border);border-radius:8px;background:#fff;font-weight:600;transition:var(--transition);cursor:pointer}
+.size-btn:hover,.size-btn.active{border-color:var(--primary);background:var(--primary);color:#fff;transform:scale(1.05)}
+.size-btn.out-of-stock{opacity:.4;cursor:not-allowed;text-decoration:line-through}
+.sp-colors{margin-bottom:24px}
+.sp-colors h4{margin-bottom:12px;font-weight:700}
+.sp-quantity{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.qty-btn{width:40px;height:40px;border-radius:8px;border:1px solid var(--border);background:#fff;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--transition)}
+.qty-btn:hover{background:var(--primary);color:#fff}
+.qty-val{font-size:20px;font-weight:700;min-width:40px;text-align:center}
+.sp-actions{display:flex;gap:12px}
+.sp-add-cart{flex:1;padding:14px;background:var(--btn-primary);color:var(--btn-primary-text);border-radius:var(--radius);font-size:16px;font-weight:700;transition:var(--transition);border:none}
+.sp-add-cart:hover{background:var(--gold);color:var(--primary);transform:translateY(-2px)}
+.sp-add-fav{width:54px;height:54px;border-radius:var(--radius);border:2px solid var(--border);background:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;transition:var(--transition);cursor:pointer}
+.sp-add-fav:hover,.sp-add-fav.active{border-color:var(--accent);background:var(--accent);color:#fff;transform:scale(1.1)}
+.sp-long-desc{margin-top:40px;padding:24px;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow)}
+.sp-long-desc h3{margin-bottom:16px;font-weight:700}
+
+/* Reviews */
+.reviews-section{margin-top:32px;padding:24px;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);grid-column:1/-1}
+.reviews-section h3{font-weight:800;font-size:20px;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.review-form{background:#f8f8f8;border-radius:var(--radius);padding:20px;margin-bottom:24px}
+.review-form h4{margin-bottom:12px;font-weight:700}
+.star-rating-input{display:flex;gap:4px;margin-bottom:12px;direction:ltr}
+.star-rating-input span{font-size:28px;cursor:pointer;color:#ddd;transition:var(--transition)}
+.star-rating-input span:hover,.star-rating-input span.active{color:var(--gold);transform:scale(1.2)}
+.review-textarea{width:100%;padding:12px;border:1px solid var(--border);border-radius:8px;min-height:80px;resize:vertical;font-size:14px}
+.review-submit{padding:10px 32px;background:var(--btn-primary);color:var(--btn-primary-text);border-radius:8px;font-weight:700;border:none;transition:var(--transition);margin-top:8px}
+.review-submit:hover{background:var(--gold);color:var(--primary)}
+.reviews-sort{display:flex;gap:8px;margin-bottom:16px;align-items:center}
+.reviews-sort label{font-size:13px;font-weight:600}
+.reviews-sort select{padding:6px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px}
+.review-card{border-bottom:1px solid var(--border);padding:16px 0;animation:fadeIn .4s ease}
+.review-card:last-child{border:none}
+.review-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.review-user{font-weight:700;font-size:14px}
+.review-date{font-size:12px;color:#999}
+.review-stars{color:var(--gold);font-size:16px;margin-bottom:6px}
+.review-text{color:var(--text-light);font-size:14px;line-height:1.8}
+.review-avg{display:flex;align-items:center;gap:12px;padding:16px;background:linear-gradient(135deg,#fff9f0,#fff5e6);border-radius:var(--radius);margin-bottom:20px}
+.review-avg-num{font-size:36px;font-weight:900;color:var(--gold)}
+.review-avg-stars{color:var(--gold);font-size:20px}
+.review-avg-count{font-size:13px;color:#999}
+
+/* Cart */
+.cart-items{display:flex;flex-direction:column;gap:16px}
+.cart-item{display:flex;gap:16px;padding:16px;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);align-items:center;transition:var(--transition);animation:cardIn .4s ease}
+.cart-item:hover{box-shadow:0 6px 25px rgba(0,0,0,.12)}
+.cart-item-img{width:100px;height:100px;object-fit:cover;border-radius:8px;background:#f0f0f0}
+.cart-item-info{flex:1}
+.cart-item-title{font-weight:700;margin-bottom:4px}
+.cart-item-meta{font-size:13px;color:var(--text-light)}
+.cart-item-price{font-weight:800;font-size:18px}
+.cart-item-remove{background:none;border:none;color:var(--accent);font-size:20px;cursor:pointer;padding:8px;transition:var(--transition)}
+.cart-item-remove:hover{transform:scale(1.2)}
+.cart-summary{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-top:24px}
+.cart-summary-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)}
+.cart-summary-row:last-child{border:none;font-weight:800;font-size:20px;color:var(--primary)}
+.discount-input-group{display:flex;gap:8px;margin-top:16px}
+.discount-input-group input{flex:1;padding:10px 16px;border:1px solid var(--border);border-radius:8px}
+.discount-input-group button{padding:10px 24px;background:var(--gold);color:var(--primary);border-radius:8px;font-weight:700;border:none;transition:var(--transition)}
+.discount-input-group button:hover{transform:scale(1.05)}
+.checkout-btn{width:100%;padding:16px;background:var(--btn-primary);color:var(--btn-primary-text);border-radius:var(--radius);font-size:18px;font-weight:700;margin-top:16px;transition:var(--transition);border:none}
+.checkout-btn:hover{background:var(--gold);color:var(--primary);transform:translateY(-2px)}
+
+/* Favorites */
+.fav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px}
+
+/* Auth Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:var(--transition)}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal{background:#fff;border-radius:16px;padding:40px;width:90%;max-width:440px;position:relative;transform:translateY(20px) scale(.95);transition:var(--transition);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal-overlay.active .modal{transform:translateY(0) scale(1)}
+.modal-close{position:absolute;top:16px;left:16px;background:none;border:none;font-size:24px;cursor:pointer;color:#999;transition:var(--transition)}
+.modal-close:hover{transform:rotate(90deg);color:var(--accent)}
+.modal h2{font-size:24px;font-weight:800;margin-bottom:24px;text-align:center}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.form-group input{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-size:15px;transition:var(--transition)}
+.form-group input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,165,116,.2)}
+.form-btn{width:100%;padding:14px;background:var(--btn-primary);color:var(--btn-primary-text);border-radius:8px;font-size:16px;font-weight:700;border:none;transition:var(--transition);margin-top:8px}
+.form-btn:hover{background:var(--gold);color:var(--primary);transform:translateY(-1px)}
+.form-switch{text-align:center;margin-top:16px;font-size:14px}
+.form-switch a{color:var(--gold);font-weight:700;cursor:pointer}
+
+/* 2FA */
+.twofa-section{text-align:center;padding:20px 0}
+.twofa-code{display:inline-block;background:linear-gradient(135deg,var(--primary),var(--accent2));color:var(--gold);font-size:36px;font-weight:900;letter-spacing:12px;padding:16px 32px;border-radius:12px;margin:16px 0;font-family:monospace}
+.twofa-input{display:flex;gap:8px;justify-content:center;margin:16px 0}
+.twofa-input input{width:48px;height:54px;text-align:center;font-size:24px;font-weight:700;border:2px solid var(--border);border-radius:8px;transition:var(--transition)}
+.twofa-input input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,165,116,.3)}
+.twofa-timer{color:var(--accent);font-weight:700;font-size:14px}
+
+/* About & Contact */
+.about-content{max-width:800px;margin:0 auto;text-align:center}
+.about-content h1{font-size:36px;font-weight:900;margin-bottom:24px}
+.about-content p{color:var(--text-light);line-height:2.2;margin-bottom:16px;font-size:16px}
+.contact-form{max-width:600px;margin:0 auto;background:var(--card);padding:32px;border-radius:var(--radius);box-shadow:var(--shadow)}
+.contact-form textarea{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-size:15px;min-height:120px;resize:vertical}
+
+/* Admin */
+.admin-layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+.admin-sidebar{background:var(--primary);color:#fff;padding:24px;overflow-y:auto}
+.admin-sidebar h2{font-size:20px;font-weight:800;margin-bottom:24px;color:var(--gold)}
+.admin-nav{display:flex;flex-direction:column;gap:4px}
+.admin-nav button{padding:12px 16px;background:none;border:none;color:rgba(255,255,255,.7);text-align:right;border-radius:8px;font-size:14px;font-weight:500;transition:var(--transition);cursor:pointer;display:flex;align-items:center;gap:8px}
+.admin-nav button:hover,.admin-nav button.active{background:rgba(255,255,255,.1);color:#fff}
+.admin-content{padding:32px;background:#f5f5f5;overflow-y:auto;max-height:100vh}
+.admin-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}
+.stat-card{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);transition:var(--transition);border-right:4px solid var(--gold)}
+.stat-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,.12)}
+.stat-card .stat-icon{font-size:28px;margin-bottom:8px}
+.stat-card .stat-num{font-size:28px;font-weight:900;color:var(--primary)}
+.stat-card .stat-label{font-size:13px;color:var(--text-light)}
+.admin-table{width:100%;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.admin-table th{background:var(--primary);color:#fff;padding:12px 16px;text-align:right;font-size:13px}
+.admin-table td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:13px}
+.admin-table tr:hover td{background:#f9f9f9}
+.admin-btn{padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600;border:none;cursor:pointer;transition:var(--transition)}
+.admin-btn:hover{transform:scale(1.05)}
+.admin-btn-edit{background:#e3f2fd;color:#1976d2}
+.admin-btn-delete{background:#fce4ec;color:#c62828}
+.admin-btn-add{background:var(--gold);color:var(--primary);padding:10px 24px;font-size:14px;border-radius:8px;margin-bottom:16px}
+.admin-form{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);margin-bottom:24px}
+.admin-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.chart-bar-container{display:flex;align-items:flex-end;gap:12px;height:200px;padding:20px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow)}
+.chart-bar{flex:1;background:linear-gradient(to top,var(--gold),var(--gold-light));border-radius:6px 6px 0 0;position:relative;transition:var(--transition);min-width:30px}
+.chart-bar:hover{opacity:.8;transform:scaleY(1.02);transform-origin:bottom}
+.chart-bar-label{position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);font-size:11px;white-space:nowrap;font-weight:600}
+.chart-bar-val{position:absolute;top:-24px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:700}
+
+/* Security Alert */
+.security-alert{background:linear-gradient(135deg,#fff3e0,#ffe0b2);border:1px solid #ffb74d;border-radius:var(--radius);padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;gap:12px;animation:alertPulse 3s ease-in-out infinite}
+@keyframes alertPulse{0%,100%{opacity:1}50%{opacity:.85}}
+.security-alert.danger{background:linear-gradient(135deg,#fce4ec,#f8bbd0);border-color:#e91e63}
+.security-alert.success{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-color:#4caf50;animation:none}
+.security-alert .alert-icon{font-size:24px}
+.security-alert .alert-text{flex:1;font-size:13px;font-weight:600}
+
+/* Admin Color Picker Section */
+.color-picker-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:24px}
+.color-picker-card{background:#fff;border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);text-align:center}
+.color-picker-card label{font-size:13px;font-weight:700;display:block;margin-bottom:8px}
+.color-picker-card input[type="color"]{width:60px;height:40px;border:none;border-radius:8px;cursor:pointer}
+.color-picker-card .hex-input{width:100%;padding:6px;border:1px solid var(--border);border-radius:6px;text-align:center;font-size:13px;margin-top:6px;font-family:monospace}
+
+/* Banner */
+.discount-banner{background:linear-gradient(135deg,var(--accent) 0%,#ff6b6b 100%);color:#fff;padding:40px;border-radius:var(--radius);text-align:center;margin:40px 0;transition:var(--transition);position:relative;overflow:hidden}
+.discount-banner::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(255,255,255,.1),transparent);animation:heroGlow 4s ease-in-out infinite}
+.discount-banner h2{font-size:28px;font-weight:900;margin-bottom:8px;position:relative}
+.discount-banner p{font-size:16px;opacity:.9;position:relative}
+
+/* Footer */
+.footer{background:var(--primary);color:rgba(255,255,255,.7);padding:48px 0 24px}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin-bottom:32px}
+.footer h4{color:#fff;font-weight:700;margin-bottom:16px}
+.footer a{display:block;padding:4px 0;transition:var(--transition);font-size:14px}
+.footer a:hover{color:var(--gold);padding-right:8px}
+.footer-bottom{text-align:center;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:13px}
+
+/* Toast */
+.toast-container{position:fixed;top:80px;left:20px;z-index:3000;display:flex;flex-direction:column;gap:8px}
+.toast{padding:14px 24px;background:#fff;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.15);font-size:14px;font-weight:600;animation:toastIn .4s cubic-bezier(.4,0,.2,1);min-width:250px;display:flex;align-items:center;gap:8px}
+.toast.success{border-right:4px solid #4caf50}
+.toast.error{border-right:4px solid var(--accent)}
+.toast.info{border-right:4px solid var(--accent2)}
+.toast.warning{border-right:4px solid #ff9800}
+@keyframes toastIn{from{transform:translateX(-100%);opacity:0}to{transform:translateX(0);opacity:1}}
+
+/* Order */
+.order-card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin-bottom:16px;transition:var(--transition)}
+.order-card:hover{box-shadow:0 6px 25px rgba(0,0,0,.1)}
+.order-card h4{font-weight:700;margin-bottom:8px}
+.order-status{display:inline-block;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700}
+.order-status.pending{background:#fff3e0;color:#e65100}
+.order-status.completed{background:#e8f5e9;color:#2e7d32}
+
+.qty-controls{display:flex;align-items:center;gap:8px}
+.color-dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);display:inline-block;margin:0 4px;transition:var(--transition)}
+.color-dot:hover{transform:scale(1.2)}
+
+/* Responsive */
+@media(max-width:768px){
+.nav{display:none}
+.mobile-menu-btn{display:block}
+.nav.mobile-open{display:flex;flex-direction:column;position:absolute;top:100%;right:0;left:0;background:#fff;padding:16px;box-shadow:var(--shadow);z-index:100}
+.categories-grid{grid-template-columns:1fr}
+.single-product{grid-template-columns:1fr}
+.hero h1{font-size:32px}
+.hero p{font-size:16px}
+.admin-layout{grid-template-columns:1fr}
+.admin-sidebar{display:none}
+.admin-sidebar.mobile-open{display:block;position:fixed;inset:0;z-index:2000}
+.filters-bar{flex-direction:column}
+.admin-form .form-row{grid-template-columns:1fr}
+.products-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.live-stats-inner{gap:20px}
+.live-stat .stat-number{font-size:22px}
+.twofa-input input{width:40px;height:46px;font-size:20px}
+}
+
+/* Page transitions */
+.page{display:none;animation:pageIn .5s cubic-bezier(.4,0,.2,1)}
+.page.active{display:block}
+@keyframes pageIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+.empty-state{text-align:center;padding:60px 20px;color:var(--text-light)}
+.empty-state .empty-icon{font-size:64px;margin-bottom:16px}
+.empty-state p{font-size:18px;margin-bottom:16px}
+
+.spinner{width:40px;height:40px;border:4px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Pie Chart CSS */
+.pie-chart-container{display:flex;gap:24px;align-items:center;flex-wrap:wrap;background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);margin-bottom:24px}
+.pie-chart{width:180px;height:180px;border-radius:50%;position:relative}
+.pie-legend{display:flex;flex-direction:column;gap:6px}
+.pie-legend-item{display:flex;align-items:center;gap:8px;font-size:13px}
+.pie-legend-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+
+/* Admin Toggle */
+.toggle-switch{position:relative;width:48px;height:26px;display:inline-block}
+.toggle-switch input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;inset:0;background:#ccc;border-radius:26px;cursor:pointer;transition:var(--transition)}
+.toggle-slider::before{content:'';position:absolute;width:20px;height:20px;border-radius:50%;background:#fff;top:3px;right:3px;transition:var(--transition)}
+.toggle-switch input:checked+.toggle-slider{background:var(--gold)}
+.toggle-switch input:checked+.toggle-slider::before{transform:translateX(-22px)}
+</style>
+</head>
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Auth Modal -->
+<div class="modal-overlay" id="authModal">
+<div class="modal">
+<button class="modal-close" onclick="closeAuthModal()">✕</button>
+<div id="loginForm">
+<h2>ورود به حساب</h2>
+<div class="form-group"><label>نام کاربری</label><input type="text" id="loginUsername" placeholder="نام کاربری خود را وارد کنید"></div>
+<div class="form-group"><label>رمز عبور</label><input type="password" id="loginPassword" placeholder="رمز عبور خود را وارد کنید"></div>
+<button class="form-btn" onclick="login()">ورود</button>
+<p class="form-switch">حساب ندارید؟ <a onclick="showRegister()">ثبت‌نام کنید</a></p>
+</div>
+<div id="registerForm" style="display:none">
+<h2>ثبت‌نام</h2>
+<div class="form-group"><label>نام و نام خانوادگی</label><input type="text" id="regName" placeholder="نام کامل خود را وارد کنید"></div>
+<div class="form-group"><label>نام کاربری</label><input type="text" id="regUsername" placeholder="نام کاربری دلخواه"></div>
+<div class="form-group"><label>ایمیل</label><input type="email" id="regEmail" placeholder="example@email.com"></div>
+<div class="form-group"><label>رمز عبور</label><input type="password" id="regPassword" placeholder="حداقل ۶ کاراکتر"></div>
+<button class="form-btn" onclick="register()">ثبت‌نام</button>
+<p class="form-switch">حساب دارید؟ <a onclick="showLogin()">وارد شوید</a></p>
+</div>
+<div id="twofaForm" style="display:none">
+<h2>🔐 احراز هویت دو مرحله‌ای</h2>
+<div class="twofa-section">
+<p style="color:var(--text-light);margin-bottom:12px">کد تأیید زیر را وارد کنید:</p>
+<div class="twofa-code" id="twofaDisplay"></div>
+<p class="twofa-timer" id="twofaTimer"></p>
+<div class="twofa-input" id="twofaInputs"></div>
+<button class="form-btn" onclick="verifyTwoFA()">تأیید و ورود</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Header -->
+<header class="header" id="mainHeader">
+<div class="container header-inner">
+<a class="logo" href="#" onclick="navigateTo('home')">پشو<span>اک</span></a>
+<nav class="nav" id="mainNav">
+<a href="#" onclick="navigateTo('home')">صفحه اصلی</a>
+<a href="#" onclick="navigateTo('products')">محصولات</a>
+<a href="#" onclick="navigateTo('about')">درباره ما</a>
+<a href="#" onclick="navigateTo('contact')">تماس با ما</a>
+<button id="adminNavBtn" style="display:none" onclick="navigateTo('admin')">🛡️ پنل مدیریت</button>
+</nav>
+<div class="nav-icons">
+<button class="nav-icon" onclick="navigateTo('favorites')" title="علاقه‌مندی‌ها">♡<span class="badge" id="favCount">۰</span></button>
+<button class="nav-icon" onclick="navigateTo('cart')" title="سبد خرید">🛒<span class="badge" id="cartCount">۰</span></button>
+<button class="nav-icon" id="userBtn" onclick="handleUserBtn()" title="حساب کاربری">👤</button>
+<button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+</div>
+</div>
+</header>
+
+<main>
+<!-- Home Page -->
+<div class="page active" id="page-home">
+<section class="hero">
+<div class="container hero-content">
+<h1>به <span>پشواک</span> خوش آمدید</h1>
+<p>فروشگاه آنلاین لوکس کفش، لباس و کیف با بهترین کیفیت و قیمت</p>
+<button class="hero-btn" onclick="navigateTo('products')">مشاهده محصولات</button>
+</div>
+</section>
+
+<div class="live-stats-bar">
+<div class="container">
+<div class="live-stats-inner" id="liveStatsBar"></div>
+</div>
+</div>
+
+<section class="section">
+<div class="container">
+<div class="section-title"><h2>دسته‌بندی‌ها</h2><p>محصولات مورد نظر خود را پیدا کنید</p></div>
+<div class="categories-grid">
+<div class="cat-card" onclick="filterByCategory('کفش')"><div class="cat-card-bg" style="background:linear-gradient(135deg,var(--cat-shoe),#764ba2);width:100%;height:100%"></div><div class="cat-card-overlay"><h3>👟 کفش</h3></div></div>
+<div class="cat-card" onclick="filterByCategory('لباس')"><div class="cat-card-bg" style="background:linear-gradient(135deg,var(--cat-cloth),#f5576c);width:100%;height:100%"></div><div class="cat-card-overlay"><h3>👗 لباس</h3></div></div>
+<div class="cat-card" onclick="filterByCategory('کیف')"><div class="cat-card-bg" style="background:linear-gradient(135deg,var(--cat-bag),#00f2fe);width:100%;height:100%"></div><div class="cat-card-overlay"><h3>👜 کیف</h3></div></div>
+</div>
+</div>
+</section>
+
+<section class="section" style="background:#f5f5f5">
+<div class="container">
+<div class="section-title"><h2>محصولات ویژه</h2><p>برترین محصولات فروشگاه</p></div>
+<div class="products-grid" id="featuredProducts"></div>
+</div>
+</section>
+
+<div class="container">
+<div class="discount-banner">
+<h2>🎉 تخفیف‌های ویژه فصل</h2>
+<p>تا ۵۰٪ تخفیف روی محصولات منتخب</p>
+</div>
+</div>
+
+<section class="section">
+<div class="container">
+<div class="section-title"><h2>پرفروش‌ترین‌ها</h2><p>محبوب‌ترین محصولات در بین مشتریان</p></div>
+<div class="products-grid" id="bestSellers"></div>
+</div>
+</section>
+</div>
+
+<!-- Products Page -->
+<div class="page" id="page-products">
+<section class="section">
+<div class="container">
+<div class="section-title"><h2>همه محصولات</h2></div>
+<div class="filters-bar">
+<input type="text" class="search-input" id="searchInput" placeholder="🔍 جستجوی محصول..." oninput="filterProducts()">
+<div class="filter-group"><label>دسته‌بندی:</label><select id="categoryFilter" onchange="filterProducts()"><option value="">همه</option><option value="کفش">کفش</option><option value="لباس">لباس</option><option value="کیف">کیف</option></select></div>
+<div class="filter-group"><label>مرتب‌سازی:</label><select id="sortFilter" onchange="filterProducts()"><option value="">پیش‌فرض</option><option value="price-asc">ارزان‌ترین</option><option value="price-desc">گران‌ترین</option><option value="popular">پرفروش‌ترین</option><option value="rating">بالاترین امتیاز</option></select></div>
+<div class="filter-group"><label>حداکثر قیمت:</label><input type="number" id="maxPriceFilter" placeholder="تومان" oninput="filterProducts()" style="width:130px"></div>
+</div>
+<div class="products-grid" id="allProducts"></div>
+</div>
+</section>
+</div>
+
+<!-- Single Product Page -->
+<div class="page" id="page-product">
+<div class="container">
+<div class="single-product" id="singleProductContent"></div>
+</div>
+</div>
+
+<!-- Cart Page -->
+<div class="page" id="page-cart">
+<section class="section"><div class="container"><div class="section-title"><h2>سبد خرید</h2></div><div id="cartContent"></div></div></section>
+</div>
+
+<!-- Favorites Page -->
+<div class="page" id="page-favorites">
+<section class="section"><div class="container"><div class="section-title"><h2>علاقه‌مندی‌ها</h2></div><div class="fav-grid" id="favContent"></div></div></section>
+</div>
+
+<!-- About Page -->
+<div class="page" id="page-about">
+<section class="section"><div class="container about-content">
+<h1>درباره <span style="color:var(--gold)">پشواک</span></h1>
+<p>پشواک، برندی ایرانی با الهام از فرهنگ غنی ایران‌زمین، با هدف ارائه محصولات باکیفیت و لوکس در زمینه کفش، لباس و کیف تأسیس شده است. ما معتقدیم هر فرد استحقاق بهترین‌ها را دارد.</p>
+<p>تیم طراحی ما با بهره‌گیری از آخرین ترندهای مد جهانی و ترکیب آن با ذوق ایرانی، محصولاتی خلق می‌کند که هم زیبا هستند و هم کاربردی.</p>
+<p>ما در پشواک به رضایت مشتری اهمیت ویژه‌ای می‌دهیم و همواره آماده شنیدن نظرات و پیشنهادات شما هستیم.</p>
+</div></section>
+</div>
+
+<!-- Contact Page -->
+<div class="page" id="page-contact">
+<section class="section"><div class="container">
+<div class="section-title"><h2>تماس با ما</h2><p>خوشحال می‌شویم نظرات شما را بشنویم</p></div>
+<div class="contact-form">
+<div class="form-group"><label>نام و نام خانوادگی</label><input type="text" id="contactName" placeholder="نام خود را وارد کنید"></div>
+<div class="form-group"><label>ایمیل</label><input type="email" id="contactEmail" placeholder="ایمیل خود را وارد کنید"></div>
+<div class="form-group"><label>موضوع</label><input type="text" id="contactSubject" placeholder="موضوع پیام"></div>
+<div class="form-group"><label>پیام</label><textarea id="contactMessage" placeholder="پیام خود را بنویسید..."></textarea></div>
+<button class="form-btn" onclick="submitContact()">ارسال پیام</button>
+</div>
+</div></section>
+</div>
+
+<!-- Admin Page -->
+<div class="page" id="page-admin">
+<div class="admin-layout">
+<aside class="admin-sidebar" id="adminSidebar">
+<h2>🛡️ پنل مدیریت</h2>
+<nav class="admin-nav">
+<button class="active" onclick="showAdminTab('dashboard',this)">📊 داشبورد</button>
+<button onclick="showAdminTab('admin-products',this)">📦 مدیریت محصولات</button>
+<button onclick="showAdminTab('admin-orders',this)">🛍️ مدیریت سفارشات</button>
+<button onclick="showAdminTab('admin-discounts',this)">🎫 کدهای تخفیف</button>
+<button onclick="showAdminTab('admin-inventory',this)">📋 موجودی انبار</button>
+<button onclick="showAdminTab('admin-users',this)">👥 کاربران</button>
+<button onclick="showAdminTab('admin-colors',this)">🎨 تنظیمات ظاهری</button>
+<button onclick="showAdminTab('admin-stats',this)">📈 آمار فروش</button>
+<button onclick="showAdminTab('admin-security',this)">🔒 امنیت</button>
+<button onclick="showAdminTab('admin-reviews',this)">⭐ نظرات کاربران</button>
+<button onclick="navigateTo('home')" style="color:var(--accent);margin-top:20px">↩ بازگشت به سایت</button>
+</nav>
+</aside>
+<div class="admin-content" id="adminContent"></div>
+</div>
+</div>
+</main>
+
+<footer class="footer" id="mainFooter">
+<div class="container">
+<div class="footer-grid">
+<div><h4>پشواک</h4><p style="font-size:14px;line-height:2">فروشگاه آنلاین لوکس با بهترین محصولات ایرانی و خارجی</p></div>
+<div><h4>دسترسی سریع</h4><a href="#" onclick="navigateTo('home')">صفحه اصلی</a><a href="#" onclick="navigateTo('products')">محصولات</a><a href="#" onclick="navigateTo('about')">درباره ما</a><a href="#" onclick="navigateTo('contact')">تماس با ما</a></div>
+<div><h4>خدمات مشتریان</h4><a href="#">ارسال رایگان</a><a href="#">گارانتی اصالت</a><a href="#">بازگشت کالا</a></div>
+<div><h4>ارتباط با ما</h4><p style="font-size:14px">📞 تلفن: ۰۲۱-۱۲۳۴۵۶۷۸</p><p style="font-size:14px">📧 ایمیل: info@poshvak.ir</p><p style="font-size:14px">📍 تهران، خیابان ولیعصر</p></div>
+</div>
+<div class="footer-bottom"><p>© ۱۴۰۳ پشواک - تمامی حقوق محفوظ است</p></div>
+</div>
+</footer>
+
+<script>
+// ============ UTILITY ============
+function toPersianNum(n){const d='۰۱۲۳۴۵۶۷۸۹';return String(n).replace(/\d/g,x=>d[x])}
+function formatPrice(p){return toPersianNum(p.toLocaleString())+' تومان'}
+function generateId(){return '_'+Math.random().toString(36).substr(2,9)}
+function showToast(msg,type='info'){const c=document.getElementById('toastContainer');const t=document.createElement('div');t.className='toast '+type;t.textContent=msg;c.appendChild(t);setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-100%)';setTimeout(()=>t.remove(),300)},3000)}
+function getStore(k,d=null){try{const v=localStorage.getItem('poshvak_'+k);return v?JSON.parse(v):d}catch(e){return d}}
+function setStore(k,v){localStorage.setItem('poshvak_'+k,JSON.stringify(v))}
+
+// ============ PRODUCTS DATA ============
+function initProducts(){
+if(getStore('products'))return;
+const products=[
+{id:'s1',name:'کفش کلاسیک چرم مردانه',category:'کفش',price:1850000,oldPrice:2200000,sizes:{36:5,37:3,38:8,39:10,40:12,41:7,42:6,43:4,44:2,45:1},color:'مشکی',colorHex:'#222',shortDesc:'کفش چرم طبیعی با طراحی کلاسیک',longDesc:'این کفش از چرم طبیعی گاوی درجه یک ساخته شده و دارای زیره ضد لغزش و کفی طبی است. مناسب برای استفاده روزمره و مجالس رسمی.',img:'https://picsum.photos/seed/shoe1/600/600',rating:4.5,sales:234},
+{id:'s2',name:'کتونی اسپرت نایک',category:'کفش',price:2450000,oldPrice:2900000,sizes:{37:4,38:6,39:8,40:10,41:9,42:5,43:3,44:0,45:0},color:'سفید',colorHex:'#f5f5f5',shortDesc:'کتونی اسپرت سبک و راحت',longDesc:'کتونی اسپرت با تکنولوژی ایر مکس، فوق‌العاده سبک و مناسب برای پیاده‌روی و ورزش.',img:'https://picsum.photos/seed/shoe2/600/600',rating:4.8,sales:567},
+{id:'s3',name:'نیم‌بوت زنانه پاشنه‌دار',category:'کفش',price:1650000,oldPrice:1900000,sizes:{36:7,37:10,38:8,39:6,40:4,41:2},color:'قهوه‌ای',colorHex:'#8B4513',shortDesc:'نیم‌بوت شیک و مجلسی',longDesc:'نیم‌بوت زنانه با پاشنه ۷ سانتی‌متری، ساخته شده از چرم مصنوعی درجه یک.',img:'https://picsum.photos/seed/shoe3/600/600',rating:4.2,sales:189},
+{id:'s4',name:'صندل تابستانی مردانه',category:'کفش',price:890000,oldPrice:1100000,sizes:{39:12,40:15,41:10,42:8,43:5,44:3},color:'مشکی',colorHex:'#333',shortDesc:'صندل راحتی تابستانه',longDesc:'صندل مردانه با بند چسبی قابل تنظیم، زیره نرم و انعطاف‌پذیر.',img:'https://picsum.photos/seed/shoe4/600/600',rating:3.8,sales:145},
+{id:'s5',name:'کفش رسمی زنانه پاشنه بلند',category:'کفش',price:1980000,oldPrice:2500000,sizes:{36:5,37:8,38:10,39:7,40:3},color:'قرمز',colorHex:'#c0392b',shortDesc:'کفش مجلسی زنانه',longDesc:'کفش پاشنه بلند زنانه با طراحی ایتالیایی، مناسب مهمانی‌ها و مراسم خاص.',img:'https://picsum.photos/seed/shoe5/600/600',rating:4.6,sales:312},
+{id:'s6',name:'کفش ورزشی دویدن',category:'کفش',price:2100000,oldPrice:2600000,sizes:{38:6,39:8,40:12,41:10,42:7,43:4,44:2},color:'آبی',colorHex:'#2980b9',shortDesc:'کفش مخصوص دویدن حرفه‌ای',longDesc:'کفش دویدن با تکنولوژی جذب ضربه پیشرفته و رویه مش سبک‌وزن.',img:'https://picsum.photos/seed/shoe6/600/600',rating:4.7,sales:423},
+{id:'s7',name:'لوفر چرم مردانه',category:'کفش',price:1750000,oldPrice:2100000,sizes:{39:5,40:8,41:10,42:7,43:4,44:2},color:'عسلی',colorHex:'#b8860b',shortDesc:'لوفر شیک و راحت',longDesc:'لوفر مردانه از چرم طبیعی با کفی فوم حافظه‌دار برای راحتی تمام روز.',img:'https://picsum.photos/seed/shoe7/600/600',rating:4.3,sales:198},
+{id:'s8',name:'بوت ساقدار زنانه',category:'کفش',price:2350000,oldPrice:2800000,sizes:{36:4,37:6,38:8,39:5,40:3},color:'مشکی',colorHex:'#1a1a1a',shortDesc:'بوت بلند زنانه',longDesc:'بوت ساقدار بلند زنانه با آستر خز مصنوعی. گرم و ضد آب.',img:'https://picsum.photos/seed/shoe8/600/600',rating:4.4,sales:276},
+{id:'s9',name:'کفش طبی مردانه',category:'کفش',price:1450000,oldPrice:1800000,sizes:{40:10,41:12,42:8,43:6,44:4,45:2},color:'قهوه‌ای تیره',colorHex:'#5D4037',shortDesc:'کفش طبی روزمره',longDesc:'کفش طبی مردانه با کفی ارتوپدی و زیره ضد لغزش. توصیه شده توسط متخصصان.',img:'https://picsum.photos/seed/shoe9/600/600',rating:4.1,sales:167},
+{id:'s10',name:'اسنیکر زنانه ستاره‌دار',category:'کفش',price:1550000,oldPrice:1850000,sizes:{36:8,37:10,38:12,39:7,40:5,41:3},color:'صورتی',colorHex:'#e91e8c',shortDesc:'اسنیکر فانتزی زنانه',longDesc:'اسنیکر زنانه با طرح ستاره و نوارهای براق. سبک و راحت.',img:'https://picsum.photos/seed/shoe10/600/600',rating:4.5,sales:345},
+{id:'c1',name:'پیراهن مردانه آکسفورد',category:'لباس',price:980000,oldPrice:1200000,sizes:{S:8,M:15,L:20,XL:12,XXL:6},color:'آبی روشن',colorHex:'#5dade2',shortDesc:'پیراهن رسمی مردانه',longDesc:'پیراهن مردانه از پارچه آکسفورد نخ پنبه، دوخت تمیز و یقه کلاسیک.',img:'https://picsum.photos/seed/cloth1/600/600',rating:4.3,sales:456},
+{id:'c2',name:'مانتو زنانه بلند',category:'لباس',price:1850000,oldPrice:2300000,sizes:{S:5,M:10,L:12,XL:8,XXL:4},color:'کرم',colorHex:'#F5E6CC',shortDesc:'مانتو بلند شیک زنانه',longDesc:'مانتو بلند زنانه با طراحی مینیمال و جنس کرپ درجه یک.',img:'https://picsum.photos/seed/cloth2/600/600',rating:4.7,sales:389},
+{id:'c3',name:'تی‌شرت اورسایز مردانه',category:'لباس',price:450000,oldPrice:600000,sizes:{S:20,M:25,L:30,XL:15,XXL:8},color:'مشکی',colorHex:'#222',shortDesc:'تی‌شرت راحت و شیک',longDesc:'تی‌شرت اورسایز مردانه از نخ پنبه ۱۰۰٪، نرم و سبک.',img:'https://picsum.photos/seed/cloth3/600/600',rating:4.1,sales:678},
+{id:'c4',name:'شلوار جین زنانه',category:'لباس',price:1250000,oldPrice:1500000,sizes:{S:10,M:15,L:12,XL:8},color:'آبی',colorHex:'#4169E1',shortDesc:'شلوار جین فاق بلند زنانه',longDesc:'شلوار جین زنانه با فاق بلند و پاچه گشاد. جنس دنیم کشی و راحت.',img:'https://picsum.photos/seed/cloth4/600/600',rating:4.5,sales:534},
+{id:'c5',name:'کت تک مردانه',category:'لباس',price:2800000,oldPrice:3500000,sizes:{S:4,M:8,L:10,XL:6,XXL:3},color:'سرمه‌ای',colorHex:'#1B2631',shortDesc:'کت تک رسمی مردانه',longDesc:'کت تک مردانه از پارچه فاستونی درجه یک با آستری ساتن.',img:'https://picsum.photos/seed/cloth5/600/600',rating:4.8,sales:201},
+{id:'c6',name:'پلیور بافت زنانه',category:'لباس',price:750000,oldPrice:950000,sizes:{S:12,M:18,L:15,XL:8},color:'صورتی',colorHex:'#FFB6C1',shortDesc:'پلیور گرم و نرم',longDesc:'پلیور بافت زنانه از نخ آکریلیک ضد حساسیت. بسیار گرم.',img:'https://picsum.photos/seed/cloth6/600/600',rating:4.2,sales:367},
+{id:'c7',name:'شلوار کتان مردانه',category:'لباس',price:890000,oldPrice:1100000,sizes:{S:8,M:14,L:18,XL:10,XXL:5},color:'خاکی',colorHex:'#C4A882',shortDesc:'شلوار کتان راسته',longDesc:'شلوار کتان مردانه با فاق متوسط و پاچه راسته. جنس کتان نرم و مقاوم.',img:'https://picsum.photos/seed/cloth7/600/600',rating:4.0,sales:289},
+{id:'c8',name:'پالتو زنانه زمستانی',category:'لباس',price:3200000,oldPrice:3900000,sizes:{S:3,M:6,L:8,XL:4},color:'شتری',colorHex:'#C19A6B',shortDesc:'پالتو بلند زمستانی',longDesc:'پالتو بلند زنانه از پارچه فوتر ضخیم با آستر مخمل.',img:'https://picsum.photos/seed/cloth8/600/600',rating:4.9,sales:178},
+{id:'c9',name:'هودی مردانه',category:'لباس',price:680000,oldPrice:850000,sizes:{S:10,M:20,L:25,XL:15,XXL:8},color:'طوسی',colorHex:'#808080',shortDesc:'هودی کلاه‌دار مردانه',longDesc:'هودی مردانه از جنس فوتر سه‌نخ با کلاه دوبل و جیب جلو.',img:'https://picsum.photos/seed/cloth9/600/600',rating:4.4,sales:512},
+{id:'c10',name:'لباس مجلسی زنانه',category:'لباس',price:3500000,oldPrice:4200000,sizes:{S:3,M:5,L:7,XL:4},color:'مشکی',colorHex:'#0a0a0a',shortDesc:'لباس مجلسی بلند زنانه',longDesc:'لباس مجلسی بلند زنانه از جنس ساتن و تور. دارای سنگ‌کاری دستی.',img:'https://picsum.photos/seed/cloth10/600/600',rating:4.9,sales:145},
+{id:'b1',name:'کیف دستی چرم زنانه',category:'کیف',price:2200000,oldPrice:2700000,sizes:{'کوچک':5,'متوسط':10,'بزرگ':7},color:'مشکی',colorHex:'#1a1a1a',shortDesc:'کیف دستی لوکس زنانه',longDesc:'کیف دستی زنانه از چرم طبیعی گاوی با دوخت دستی.',img:'https://picsum.photos/seed/bag1/600/600',rating:4.6,sales:234},
+{id:'b2',name:'کوله‌پشتی چرم مردانه',category:'کیف',price:1850000,oldPrice:2200000,sizes:{'استاندارد':15},color:'قهوه‌ای',colorHex:'#6F4E37',shortDesc:'کوله‌پشتی روزمره',longDesc:'کوله‌پشتی مردانه از چرم مصنوعی درجه یک با محفظه لپ‌تاپ.',img:'https://picsum.photos/seed/bag2/600/600',rating:4.3,sales:345},
+{id:'b3',name:'کیف رودوشی زنانه',category:'کیف',price:950000,oldPrice:1200000,sizes:{'کوچک':12,'متوسط':8},color:'قرمز',colorHex:'#E74C3C',shortDesc:'کیف رودوشی شیک',longDesc:'کیف رودوشی زنانه با بند زنجیری طلایی. مناسب مهمانی.',img:'https://picsum.photos/seed/bag3/600/600',rating:4.4,sales:456},
+{id:'b4',name:'کیف لپ‌تاپ',category:'کیف',price:1350000,oldPrice:1600000,sizes:{'۱۳ اینچ':8,'۱۵ اینچ':12,'۱۷ اینچ':6},color:'سرمه‌ای',colorHex:'#2C3E50',shortDesc:'کیف محافظ لپ‌تاپ',longDesc:'کیف لپ‌تاپ ضد ضربه با آستر نرم داخلی.',img:'https://picsum.photos/seed/bag4/600/600',rating:4.2,sales:289},
+{id:'b5',name:'کیف دوشی مردانه',category:'کیف',price:780000,oldPrice:950000,sizes:{'استاندارد':20},color:'مشکی',colorHex:'#2d2d2d',shortDesc:'کیف دوشی کژوال',longDesc:'کیف دوشی مردانه از جنس برزنت ضد آب. سبک و مقاوم.',img:'https://picsum.photos/seed/bag5/600/600',rating:3.9,sales:178},
+{id:'b6',name:'کیف پول زنانه',category:'کیف',price:580000,oldPrice:750000,sizes:{'استاندارد':25},color:'صورتی',colorHex:'#FF69B4',shortDesc:'کیف پول چرمی زنانه',longDesc:'کیف پول زنانه از چرم طبیعی بز با جاکارتی متعدد.',img:'https://picsum.photos/seed/bag6/600/600',rating:4.5,sales:567},
+{id:'b7',name:'ساک ورزشی',category:'کیف',price:1100000,oldPrice:1400000,sizes:{'متوسط':10,'بزرگ':8},color:'مشکی-قرمز',colorHex:'#c0392b',shortDesc:'ساک ورزشی چندکاره',longDesc:'ساک ورزشی با محفظه جداگانه برای کفش و لوازم خیس.',img:'https://picsum.photos/seed/bag7/600/600',rating:4.1,sales:234},
+{id:'b8',name:'کیف سفری',category:'کیف',price:2650000,oldPrice:3200000,sizes:{'متوسط':6,'بزرگ':4},color:'مشکی',colorHex:'#1c1c1c',shortDesc:'کیف سفری چرخ‌دار',longDesc:'کیف سفری چرخ‌دار با بدنه سخت و مقاوم. دارای قفل رمزی TSA.',img:'https://picsum.photos/seed/bag8/600/600',rating:4.7,sales:156},
+{id:'b9',name:'کیف کمری',category:'کیف',price:450000,oldPrice:600000,sizes:{'استاندارد':30},color:'مشکی',colorHex:'#333',shortDesc:'کیف کمری اسپرت',longDesc:'کیف کمری اسپرت و سبک. مناسب پیاده‌روی و سفر.',img:'https://picsum.photos/seed/bag9/600/600',rating:3.8,sales:423},
+{id:'b10',name:'کیف مجلسی زنانه کلاچ',category:'کیف',price:1200000,oldPrice:1500000,sizes:{'استاندارد':15},color:'طلایی',colorHex:'#FFD700',shortDesc:'کیف مجلسی لوکس',longDesc:'کیف کلاچ مجلسی زنانه با سنگ‌کاری و زنجیر طلایی.',img:'https://picsum.photos/seed/bag10/600/600',rating:4.6,sales:298}
+];
+setStore('products',products);
+}
+
+function initDiscounts(){
+if(getStore('discounts'))return;
+setStore('discounts',[
+{id:'d1',code:'WELCOME10',percent:10,expiry:'2025-12-31',usageLimit:100,usedCount:0,active:true},
+{id:'d2',code:'SUMMER20',percent:20,expiry:'2025-09-30',usageLimit:50,usedCount:0,active:true},
+{id:'d3',code:'VIP30',percent:30,expiry:'2025-06-30',usageLimit:20,usedCount:0,active:false}
+]);
+}
+
+function initData(){
+initProducts();initDiscounts();
+if(!getStore('users'))setStore('users',[]);
+if(!getStore('orders'))setStore('orders',[]);
+if(!getStore('reviews'))setStore('reviews',[]);
+if(!getStore('adminColors'))setStore('adminColors',{primary:'#1a1a2e',gold:'#d4a574',accent:'#e94560',btnPrimary:'#1a1a2e',bg:'#fafafa',catShoe:'#667eea',catCloth:'#f093fb',catBag:'#4facfe'});
+if(!getStore('securityLog'))setStore('securityLog',[]);
+if(!getStore('admin2fa'))setStore('admin2fa',{enabled:true});
+}
+
+// ============ APPLY CUSTOM COLORS ============
+function applyCustomColors(){
+const c=getStore('adminColors');
+if(!c)return;
+const r=document.documentElement;
+if(c.primary)r.style.setProperty('--primary',c.primary);
+if(c.gold)r.style.setProperty('--gold',c.gold);
+if(c.accent)r.style.setProperty('--accent',c.accent);
+if(c.btnPrimary){r.style.setProperty('--btn-primary',c.btnPrimary);r.style.setProperty('--btn-primary-text','#fff')}
+if(c.bg)r.style.setProperty('--bg',c.bg);
+if(c.catShoe)r.style.setProperty('--cat-shoe',c.catShoe);
+if(c.catCloth)r.style.setProperty('--cat-cloth',c.catCloth);
+if(c.catBag)r.style.setProperty('--cat-bag',c.catBag);
+}
+
+// ============ AUTH ============
+let currentUser=getStore('currentUser',null);
+let twoFACode='';let twoFATimer=null;
+
+function openAuthModal(){document.getElementById('authModal').classList.add('active');showLogin()}
+function closeAuthModal(){document.getElementById('authModal').classList.remove('active');if(twoFATimer)clearInterval(twoFATimer)}
+function showLogin(){document.getElementById('loginForm').style.display='block';document.getElementById('registerForm').style.display='none';document.getElementById('twofaForm').style.display='none'}
+function showRegister(){document.getElementById('loginForm').style.display='none';document.getElementById('registerForm').style.display='block';document.getElementById('twofaForm').style.display='none'}
+
+function login(){
+const u=document.getElementById('loginUsername').value.trim();
+const p=document.getElementById('loginPassword').value.trim();
+if(!u||!p){showToast('لطفاً تمام فیلدها را پر کنید','error');return}
+if(u==='admin'&&p==='Poshvak@1403'){
+const settings=getStore('admin2fa',{enabled:true});
+if(settings.enabled){
+startTwoFA();
+return;
+}
+completeAdminLogin();
+return;
+}
+const users=getStore('users',[]);
+const user=users.find(x=>x.username===u&&x.password===p);
+if(user){
+currentUser={username:user.username,name:user.name,email:user.email,isAdmin:false};
+setStore('currentUser',currentUser);closeAuthModal();updateUI();
+logSecurity('ورود کاربر: '+user.username);
+showToast('خوش آمدید '+user.name+'!','success');
+}else{
+logSecurity('تلاش ناموفق ورود: '+u);
+showToast('نام کاربری یا رمز عبور اشتباه است','error');
+}
+}
+
+function startTwoFA(){
+twoFACode=String(Math.floor(100000+Math.random()*900000));
+document.getElementById('loginForm').style.display='none';
+document.getElementById('twofaForm').style.display='block';
+document.getElementById('twofaDisplay').textContent=twoFACode;
+let inp='';for(let i=0;i<6;i++)inp+='<input type="text" maxlength="1" oninput="twoFANext(this,'+i+')" onkeydown="twoFABack(event,this,'+i+')">';
+document.getElementById('twofaInputs').innerHTML=inp;
+document.getElementById('twofaInputs').children[0].focus();
+let sec=120;
+const timerEl=document.getElementById('twofaTimer');
+if(twoFATimer)clearInterval(twoFATimer);
+twoFATimer=setInterval(()=>{
+sec--;
+const m=Math.floor(sec/60);const s=sec%60;
+timerEl.textContent='اعتبار کد: '+toPersianNum(m)+':'+toPersianNum(s<10?'0'+s:s);
+if(sec<=0){clearInterval(twoFATimer);timerEl.textContent='کد منقضی شد';twoFACode=''}
+},1000);
+logSecurity('شروع فرآیند احراز هویت دو مرحله‌ای');
+}
+
+function twoFANext(el,i){
+if(el.value.length===1){const inputs=document.getElementById('twofaInputs').children;if(i<5)inputs[i+1].focus()}
+}
+function twoFABack(e,el,i){
+if(e.key==='Backspace'&&el.value===''&&i>0){document.getElementById('twofaInputs').children[i-1].focus()}
+}
+
+function verifyTwoFA(){
+const inputs=document.getElementById('twofaInputs').children;
+let code='';for(let i=0;i<6;i++)code+=inputs[i].value;
+if(code===twoFACode){
+completeAdminLogin();
+logSecurity('احراز هویت دو مرحله‌ای موفق');
+}else{
+showToast('کد وارد شده اشتباه است','error');
+logSecurity('تلاش ناموفق احراز هویت دو مرحله‌ای');
+}
+}
+
+function completeAdminLogin(){
+currentUser={username:'admin',name:'مدیر سایت',email:'admin@poshvak.ir',isAdmin:true};
+setStore('currentUser',currentUser);closeAuthModal();updateUI();
+if(twoFATimer)clearInterval(twoFATimer);
+showToast('خوش آمدید مدیر! 🛡️','success');
+}
+
+function register(){
+const name=document.getElementById('regName').value.trim();
+const u=document.getElementById('regUsername').value.trim();
+const e=document.getElementById('regEmail').value.trim();
+const p=document.getElementById('regPassword').value.trim();
+if(!name||!u||!e||!p){showToast('لطفاً تمام فیلدها را پر کنید','error');return}
+if(p.length<6){showToast('رمز عبور باید حداقل ۶ کاراکتر باشد','error');return}
+if(!e.includes('@')){showToast('ایمیل معتبر وارد کنید','error');return}
+const users=getStore('users',[]);
+if(users.find(x=>x.username===u)){showToast('این نام کاربری قبلاً ثبت شده','error');return}
+users.push({username:u,name,email:e,password:p,createdAt:new Date().toISOString()});
+setStore('users',users);
+currentUser={username:u,name,email:e,isAdmin:false};
+setStore('currentUser',currentUser);closeAuthModal();updateUI();
+showToast('ثبت‌نام با موفقیت انجام شد!','success');
+}
+
+function logout(){currentUser=null;localStorage.removeItem('poshvak_currentUser');updateUI();navigateTo('home');showToast('از حساب خارج شدید','info')}
+function handleUserBtn(){if(currentUser){if(confirm('آیا می‌خواهید از حساب خارج شوید؟'))logout()}else openAuthModal()}
+function requireAuth(){if(!currentUser){showToast('لطفاً ابتدا وارد حساب کاربری خود شوید','error');openAuthModal();return false}return true}
+
+// ============ SECURITY LOG ============
+function logSecurity(msg){
+const log=getStore('securityLog',[]);
+log.unshift({msg,date:new Date().toISOString()});
+if(log.length>50)log.length=50;
+setStore('securityLog',log);
+}
+
+// ============ NAVIGATION ============
+function navigateTo(page,data=null){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+const el=document.getElementById('page-'+page);
+if(el){el.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+const hdr=document.getElementById('mainHeader');const ftr=document.getElementById('mainFooter');
+if(page==='admin'){hdr.style.display='none';ftr.style.display='none'}else{hdr.style.display='';ftr.style.display=''}
+if(page==='home')renderHome();
+else if(page==='products')renderProducts();
+else if(page==='product')renderSingleProduct(data);
+else if(page==='cart')renderCart();
+else if(page==='favorites')renderFavorites();
+else if(page==='admin'){if(currentUser&&currentUser.isAdmin)renderAdmin();else{showToast('دسترسی غیرمجاز','error');navigateTo('home')}}
+document.getElementById('mainNav').classList.remove('mobile-open');
+}
+function toggleMobileMenu(){document.getElementById('mainNav').classList.toggle('mobile-open')}
+
+// ============ STARS ============
+function renderStars(r){let s='';for(let i=1;i<=5;i++)s+=i<=Math.floor(r)?'★':'☆';return s}
+
+// ============ LIVE STATS ============
+function renderLiveStats(){
+const products=getStore('products',[]);
+const orders=getStore('orders',[]);
+const users=getStore('users',[]);
+const totalSold=products.reduce((s,p)=>s+p.sales,0);
+const pending=orders.filter(o=>o.status==='pending').length;
+document.getElementById('liveStatsBar').innerHTML=`
+<div class="live-stat"><span class="stat-number">${toPersianNum(totalSold)}</span><span class="stat-text">محصول فروخته شده</span></div>
+<div class="live-stat"><span class="stat-number">${toPersianNum(users.length)}</span><span class="stat-text">کاربر ثبت‌نام شده</span></div>
+<div class="live-stat"><span class="stat-number">${toPersianNum(pending)}</span><span class="stat-text">سفارش در حال پردازش</span></div>
+<div class="live-stat"><span class="stat-number">${toPersianNum(products.length)}</span><span class="stat-text">محصول فعال</span></div>`;
+}
+
+// ============ PRODUCT CARD ============
+function productCardHTML(p,i){
+const disc=Math.round((1-p.price/p.oldPrice)*100);
+const favs=getStore('favorites_'+(currentUser?currentUser.username:''),[]);
+const isFav=favs.includes(p.id);
+const reviews=getStore('reviews',[]).filter(r=>r.productId===p.id);
+const avgR=reviews.length?reviews.reduce((s,r)=>s+r.rating,0)/reviews.length:p.rating;
+return`<div class="product-card" style="animation-delay:${(i||0)*0.05}s">
+<div class="product-card-img">
+<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://picsum.photos/seed/${p.id}/600/600'">
+${disc>0?`<span class="product-discount-badge">${toPersianNum(disc)}٪</span>`:''}
+<button class="product-fav-btn ${isFav?'active':''}" onclick="event.stopPropagation();toggleFav('${p.id}')">${isFav?'♥':'♡'}</button>
+</div>
+<div class="product-card-body" onclick="navigateTo('product','${p.id}')" style="cursor:pointer">
+<div class="product-card-cat">${p.category}</div>
+<div class="product-card-title">${p.name}</div>
+<div class="product-card-rating">${renderStars(avgR)} <span style="color:#999;margin-right:4px;font-size:12px">(${toPersianNum(avgR.toFixed(1))})</span></div>
+<div class="product-card-price"><span class="price-current">${formatPrice(p.price)}</span>${p.oldPrice>p.price?`<span class="price-old">${formatPrice(p.oldPrice)}</span>`:''}</div>
+<div class="product-card-footer">
+<button class="add-cart-btn" onclick="event.stopPropagation();quickAddCart('${p.id}')">افزودن به سبد</button>
+<span class="product-sales">${toPersianNum(p.sales)} فروش</span>
+</div></div></div>`}
+
+// ============ HOME ============
+function renderHome(){
+renderLiveStats();
+const products=getStore('products',[]);
+document.getElementById('featuredProducts').innerHTML=products.slice().sort(()=>Math.random()-.5).slice(0,8).map((p,i)=>productCardHTML(p,i)).join('');
+document.getElementById('bestSellers').innerHTML=products.slice().sort((a,b)=>b.sales-a.sales).slice(0,8).map((p,i)=>productCardHTML(p,i)).join('');
+}
+
+// ============ PRODUCTS ============
+function renderProducts(){filterProducts()}
+function filterProducts(){
+let products=getStore('products',[]);
+const search=document.getElementById('searchInput').value.trim();
+const cat=document.getElementById('categoryFilter').value;
+const sort=document.getElementById('sortFilter').value;
+const maxPrice=parseInt(document.getElementById('maxPriceFilter').value)||Infinity;
+if(search)products=products.filter(p=>p.name.includes(search)||p.shortDesc.includes(search));
+if(cat)products=products.filter(p=>p.category===cat);
+products=products.filter(p=>p.price<=maxPrice);
+if(sort==='price-asc')products.sort((a,b)=>a.price-b.price);
+else if(sort==='price-desc')products.sort((a,b)=>b.price-a.price);
+else if(sort==='popular')products.sort((a,b)=>b.sales-a.sales);
+else if(sort==='rating')products.sort((a,b)=>b.rating-a.rating);
+const el=document.getElementById('allProducts');
+el.innerHTML=products.length===0?'<div class="empty-state"><div class="empty-icon">🔍</div><p>محصولی یافت نشد</p></div>':products.map((p,i)=>productCardHTML(p,i)).join('');
+}
+function filterByCategory(cat){navigateTo('products');setTimeout(()=>{document.getElementById('categoryFilter').value=cat;filterProducts()},100)}
+
+// ============ REVIEWS ============
+function getProductReviews(pid){return getStore('reviews',[]).filter(r=>r.productId===pid)}
+function renderReviewsSection(pid){
+const reviews=getProductReviews(pid);
+const avg=reviews.length?reviews.reduce((s,r)=>s+r.rating,0)/reviews.length:0;
+return`<div class="reviews-section">
+<h3>⭐ نظرات و امتیازات (${toPersianNum(reviews.length)})</h3>
+${reviews.length>0?`<div class="review-avg">
+<div class="review-avg-num">${toPersianNum(avg.toFixed(1))}</div>
+<div><div class="review-avg-stars">${renderStars(avg)}</div><div class="review-avg-count">از ${toPersianNum(reviews.length)} نظر</div></div>
+</div>`:''}
+${currentUser?`<div class="review-form">
+<h4>نظر خود را بنویسید:</h4>
+<div class="star-rating-input" id="starInput">${[1,2,3,4,5].map(i=>`<span onclick="setReviewStar(${i})" data-star="${i}">☆</span>`).join('')}</div>
+<textarea class="review-textarea" id="reviewText" placeholder="نظر شما درباره این محصول..."></textarea>
+<button class="review-submit" onclick="submitReview('${pid}')">ارسال نظر</button>
+</div>`:'<p style="color:var(--text-light);margin-bottom:16px;font-size:14px">برای ثبت نظر ابتدا وارد حساب کاربری شوید.</p>'}
+<div class="reviews-sort">
+<label>مرتب‌سازی:</label>
+<select onchange="sortAndRenderReviews('${pid}',this.value)">
+<option value="date-desc">جدیدترین</option>
+<option value="date-asc">قدیمی‌ترین</option>
+<option value="rating-desc">بالاترین امتیاز</option>
+<option value="rating-asc">پایین‌ترین امتیاز</option>
+</select>
+</div>
+<div id="reviewsList">${renderReviewsList(reviews)}</div>
+</div>`}
+
+let currentReviewRating=0;
+function setReviewStar(n){
+currentReviewRating=n;
+document.querySelectorAll('#starInput span').forEach((s,i)=>{s.textContent=i<n?'★':'☆';s.classList.toggle('active',i<n)});
+}
+
+function submitReview(pid){
+if(!currentUser){showToast('ابتدا وارد شوید','error');return}
+if(!currentReviewRating){showToast('لطفاً امتیاز خود را انتخاب کنید','error');return}
+const text=document.getElementById('reviewText').value.trim();
+if(!text){showToast('لطفاً متن نظر را بنویسید','error');return}
+const reviews=getStore('reviews',[]);
+reviews.push({id:generateId(),productId:pid,user:currentUser.name,username:currentUser.username,rating:currentReviewRating,text,date:new Date().toISOString()});
+setStore('reviews',reviews);
+// Update product avg rating
+const pReviews=reviews.filter(r=>r.productId===pid);
+const avg=pReviews.reduce((s,r)=>s+r.rating,0)/pReviews.length;
+const products=getStore('products',[]);
+const p=products.find(x=>x.id===pid);
+if(p){p.rating=Math.round(avg*10)/10;setStore('products',products)}
+currentReviewRating=0;
+showToast('نظر شما ثبت شد! ⭐','success');
+renderSingleProduct(pid);
+}
+
+function renderReviewsList(reviews){
+if(reviews.length===0)return'<p style="color:#999;text-align:center;padding:20px">هنوز نظری ثبت نشده است</p>';
+return reviews.map(r=>`<div class="review-card">
+<div class="review-header"><span class="review-user">👤 ${r.user}</span><span class="review-date">${new Date(r.date).toLocaleDateString('fa-IR')}</span></div>
+<div class="review-stars">${renderStars(r.rating)}</div>
+<p class="review-text">${r.text}</p>
+</div>`).join('')}
+
+function sortAndRenderReviews(pid,sort){
+let reviews=getProductReviews(pid);
+if(sort==='date-desc')reviews.sort((a,b)=>new Date(b.date)-new Date(a.date));
+else if(sort==='date-asc')reviews.sort((a,b)=>new Date(a.date)-new Date(b.date));
+else if(sort==='rating-desc')reviews.sort((a,b)=>b.rating-a.rating);
+else if(sort==='rating-asc')reviews.sort((a,b)=>a.rating-b.rating);
+document.getElementById('reviewsList').innerHTML=renderReviewsList(reviews);
+}
+
+// ============ SINGLE PRODUCT ============
+let selectedSize=null;let selectedQty=1;
+function renderSingleProduct(pid){
+const products=getStore('products',[]);
+const p=products.find(x=>x.id===pid);
+if(!p){showToast('محصول یافت نشد','error');navigateTo('home');return}
+selectedSize=null;selectedQty=1;
+const disc=Math.round((1-p.price/p.oldPrice)*100);
+const favs=getStore('favorites_'+(currentUser?currentUser.username:''),[]);
+const isFav=favs.includes(p.id);
+const reviews=getProductReviews(p.id);
+const avgR=reviews.length?reviews.reduce((s,r)=>s+r.rating,0)/reviews.length:p.rating;
+document.getElementById('singleProductContent').innerHTML=`
+<div class="sp-gallery"><img class="sp-main-img" src="${p.img}" alt="${p.name}" onerror="this.src='https://picsum.photos/seed/${p.id}/600/600'"></div>
+<div class="sp-info">
+<div class="sp-category">${p.category}</div>
+<h1>${p.name}</h1>
+<div class="sp-rating">${renderStars(avgR)} <span style="color:#999;font-size:14px;margin-right:8px">(${toPersianNum(avgR.toFixed(1))} از ۵ - ${toPersianNum(reviews.length)} نظر - ${toPersianNum(p.sales)} فروش)</span></div>
+<div class="sp-price-box"><span class="sp-price">${formatPrice(p.price)}</span>${p.oldPrice>p.price?`<span class="sp-old-price">${formatPrice(p.oldPrice)}</span><span class="sp-discount">${toPersianNum(disc)}٪</span>`:''}</div>
+<p class="sp-desc">${p.shortDesc}</p>
+<div class="sp-colors"><h4>رنگ: ${p.color}</h4><span class="color-dot" style="background:${p.colorHex}"></span></div>
+<div class="sp-sizes"><h4>سایز:</h4><div class="sizes-list">${Object.entries(p.sizes).map(([s,stock])=>`<button class="size-btn ${stock===0?'out-of-stock':''}" onclick="${stock>0?`selectSize(this,'${s}',${stock})`:'void(0)'}" ${stock===0?'disabled':''}>${s}${stock===0?' (ناموجود)':''}</button>`).join('')}</div></div>
+<div class="sp-quantity"><span style="font-weight:700">تعداد:</span><button class="qty-btn" onclick="changeQty(-1)">−</button><span class="qty-val" id="qtyVal">${toPersianNum(1)}</span><button class="qty-btn" onclick="changeQty(1)">+</button></div>
+<div class="sp-actions">
+<button class="sp-add-cart" onclick="addToCart('${p.id}')">🛒 افزودن به سبد خرید</button>
+<button class="sp-add-fav ${isFav?'active':''}" onclick="toggleFav('${p.id}');renderSingleProduct('${p.id}')">${isFav?'♥':'♡'}</button>
+</div>
+</div>
+<div class="sp-long-desc" style="grid-column:1/-1"><h3>توضیحات کامل محصول</h3><p style="line-height:2.2;color:var(--text-light)">${p.longDesc}</p></div>
+${renderReviewsSection(p.id)}`}
+
+function selectSize(btn,size,stock){document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');selectedSize=size;if(selectedQty>stock){selectedQty=stock;document.getElementById('qtyVal').textContent=toPersianNum(selectedQty)}}
+function changeQty(d){const nq=selectedQty+d;if(nq>=1&&nq<=99){selectedQty=nq;document.getElementById('qtyVal').textContent=toPersianNum(selectedQty)}}
+
+// ============ CART ============
+function getCart(){return getStore('cart_'+(currentUser?currentUser.username:''),[])}
+function setCart(c){setStore('cart_'+(currentUser?currentUser.username:''),c);updateCartCount()}
+
+function quickAddCart(pid){
+if(!requireAuth())return;
+const p=getStore('products',[]).find(x=>x.id===pid);if(!p)return;
+const firstAvail=Object.entries(p.sizes).find(([s,st])=>st>0);
+if(!firstAvail){showToast('این محصول موجود نیست','error');return}
+const cart=getCart();const ex=cart.find(i=>i.productId===pid&&i.size===firstAvail[0]);
+if(ex)ex.qty++;else cart.push({productId:pid,size:firstAvail[0],qty:1});
+setCart(cart);showToast('به سبد خرید اضافه شد ✓','success');
+}
+
+function addToCart(pid){
+if(!requireAuth())return;
+if(!selectedSize){showToast('لطفاً یک سایز انتخاب کنید','error');return}
+const cart=getCart();const ex=cart.find(i=>i.productId===pid&&i.size===selectedSize);
+if(ex)ex.qty+=selectedQty;else cart.push({productId:pid,size:selectedSize,qty:selectedQty});
+setCart(cart);showToast('به سبد خرید اضافه شد ✓','success');
+}
+
+function removeFromCart(idx){const cart=getCart();cart.splice(idx,1);setCart(cart);renderCart()}
+function updateCartQty(idx,d){const cart=getCart();cart[idx].qty+=d;if(cart[idx].qty<1)cart.splice(idx,1);setCart(cart);renderCart()}
+
+function renderCart(){
+const cart=getCart();const products=getStore('products',[]);const el=document.getElementById('cartContent');
+if(!cart.length){el.innerHTML='<div class="empty-state"><div class="empty-icon">🛒</div><p>سبد خرید شما خالی است</p><button class="hero-btn" onclick="navigateTo(\'products\')" style="font-size:14px;padding:12px 32px">مشاهده محصولات</button></div>';return}
+let total=0;
+const items=cart.map((item,i)=>{const p=products.find(x=>x.id===item.productId);if(!p)return'';const sub=p.price*item.qty;total+=sub;
+return`<div class="cart-item"><img class="cart-item-img" src="${p.img}" alt="${p.name}" onerror="this.src='https://picsum.photos/seed/${p.id}/100/100'"><div class="cart-item-info"><div class="cart-item-title">${p.name}</div><div class="cart-item-meta">سایز: ${item.size} | رنگ: ${p.color}</div><div class="qty-controls" style="margin-top:8px"><button class="qty-btn" style="width:30px;height:30px;font-size:16px" onclick="updateCartQty(${i},-1)">−</button><span style="font-weight:700;min-width:30px;text-align:center">${toPersianNum(item.qty)}</span><button class="qty-btn" style="width:30px;height:30px;font-size:16px" onclick="updateCartQty(${i},1)">+</button></div></div><div style="text-align:left"><div class="cart-item-price">${formatPrice(sub)}</div><button class="cart-item-remove" onclick="removeFromCart(${i})">✕</button></div></div>`}).join('');
+el.innerHTML=`<div class="cart-items">${items}</div><div class="cart-summary"><div class="cart-summary-row"><span>جمع کل:</span><span>${formatPrice(total)}</span></div><div class="cart-summary-row" id="discountRow" style="display:none"><span>تخفیف:</span><span id="discountAmount"></span></div><div class="cart-summary-row" id="finalRow"><span>مبلغ قابل پرداخت:</span><span id="finalAmount">${formatPrice(total)}</span></div><div class="discount-input-group"><input type="text" id="discountCodeInput" placeholder="کد تخفیف"><button onclick="applyDiscount()">اعمال</button></div><button class="checkout-btn" onclick="checkout(${total})">🛍️ ثبت سفارش</button></div>`;
+}
+
+let appliedDiscount=0;
+function applyDiscount(){
+const code=document.getElementById('discountCodeInput').value.trim().toUpperCase();
+if(!code){showToast('کد تخفیف را وارد کنید','error');return}
+const disc=getStore('discounts',[]).find(d=>d.code===code);
+if(!disc){showToast('کد تخفیف نامعتبر','error');return}
+if(!disc.active){showToast('این کد غیرفعال است','error');return}
+if(new Date(disc.expiry)<new Date()){showToast('کد منقضی شده','error');return}
+if(disc.usedCount>=disc.usageLimit){showToast('ظرفیت تمام شده','error');return}
+const cart=getCart();const products=getStore('products',[]);
+let total=0;cart.forEach(item=>{const p=products.find(x=>x.id===item.productId);if(p)total+=p.price*item.qty});
+const discAmt=Math.round(total*disc.percent/100);const final=total-discAmt;
+document.getElementById('discountRow').style.display='flex';
+document.getElementById('discountAmount').textContent=formatPrice(discAmt)+' ('+toPersianNum(disc.percent)+'٪)';
+document.getElementById('finalAmount').textContent=formatPrice(final);
+document.querySelector('.checkout-btn').setAttribute('onclick',`checkout(${final},'${code}')`);
+appliedDiscount=disc.percent;showToast('کد تخفیف اعمال شد! 🎉','success');
+}
+
+function checkout(amount,discountCode=''){
+if(!requireAuth())return;const cart=getCart();if(!cart.length){showToast('سبد خالی است','error');return}
+const products=getStore('products',[]);const orders=getStore('orders',[]);
+const orderItems=cart.map(item=>{const p=products.find(x=>x.id===item.productId);return{...item,name:p?p.name:'',price:p?p.price:0,color:p?p.color:''}});
+const allP=getStore('products',[]);
+cart.forEach(item=>{const p=allP.find(x=>x.id===item.productId);if(p&&p.sizes[item.size]!==undefined){p.sizes[item.size]=Math.max(0,p.sizes[item.size]-item.qty);p.sales=(p.sales||0)+item.qty}});
+setStore('products',allP);
+if(discountCode){const discs=getStore('discounts',[]);const d=discs.find(x=>x.code===discountCode);if(d)d.usedCount++;setStore('discounts',discs)}
+orders.push({id:generateId(),user:currentUser.username,items:orderItems,total:amount,discountCode,status:'pending',date:new Date().toISOString()});
+setStore('orders',orders);setCart([]);appliedDiscount=0;renderCart();showToast('سفارش ثبت شد! 🎉','success');
+}
+
+// ============ FAVORITES ============
+function getFavs(){return getStore('favorites_'+(currentUser?currentUser.username:''),[])}
+function setFavs(f){setStore('favorites_'+(currentUser?currentUser.username:''),f);updateFavCount()}
+function toggleFav(pid){
+if(!requireAuth())return;let favs=getFavs();const idx=favs.indexOf(pid);
+if(idx>-1){favs.splice(idx,1);showToast('از علاقه‌مندی‌ها حذف شد','info')}else{favs.push(pid);showToast('به علاقه‌مندی‌ها اضافه شد ♥','success')}
+setFavs(favs);renderHome();
+if(document.getElementById('page-products').classList.contains('active'))filterProducts();
+if(document.getElementById('page-favorites').classList.contains('active'))renderFavorites();
+}
+function renderFavorites(){
+if(!currentUser){document.getElementById('favContent').innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">♡</div><p>برای مشاهده علاقه‌مندی‌ها وارد شوید</p></div>';return}
+const favs=getFavs();const products=getStore('products',[]).filter(p=>favs.includes(p.id));
+document.getElementById('favContent').innerHTML=products.length?products.map((p,i)=>productCardHTML(p,i)).join(''):'<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">♡</div><p>لیست خالی است</p></div>';
+}
+
+// ============ UI ============
+function updateCartCount(){document.getElementById('cartCount').textContent=toPersianNum(getCart().reduce((s,i)=>s+i.qty,0))}
+function updateFavCount(){document.getElementById('favCount').textContent=toPersianNum(getFavs().length)}
+function updateUI(){
+updateCartCount();updateFavCount();
+const btn=document.getElementById('userBtn');const adm=document.getElementById('adminNavBtn');
+if(currentUser){btn.textContent=currentUser.name.charAt(0);btn.style.background=currentUser.isAdmin?'var(--gold)':'var(--primary)';btn.style.color='#fff';btn.title='خروج: '+currentUser.name;adm.style.display=currentUser.isAdmin?'inline-block':'none'}
+else{btn.textContent='👤';btn.style.background='#f5f5f5';btn.style.color='var(--text)';btn.title='ورود / ثبت‌نام';adm.style.display='none'}
+}
+
+function submitContact(){
+const n=document.getElementById('contactName').value.trim(),e=document.getElementById('contactEmail').value.trim(),s=document.getElementById('contactSubject').value.trim(),m=document.getElementById('contactMessage').value.trim();
+if(!n||!e||!s||!m){showToast('لطفاً تمام فیلدها را پر کنید','error');return}
+if(!e.includes('@')){showToast('ایمیل معتبر وارد کنید','error');return}
+showToast('پیام ارسال شد! ✉️','success');['contactName','contactEmail','contactSubject','contactMessage'].forEach(id=>document.getElementById(id).value='');
+}
+
+// ============ ADMIN ============
+let currentAdminTab='dashboard';
+function showAdminTab(tab,btn){currentAdminTab=tab;document.querySelectorAll('.admin-nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');renderAdmin()}
+
+function renderAdmin(){
+const el=document.getElementById('adminContent');
+const tabs={dashboard:renderAdminDashboard,'admin-products':renderAdminProducts,'admin-orders':renderAdminOrders,'admin-discounts':renderAdminDiscounts,'admin-inventory':renderAdminInventory,'admin-users':renderAdminUsers,'admin-colors':renderAdminColors,'admin-stats':renderAdminSalesStats,'admin-security':renderAdminSecurity,'admin-reviews':renderAdminReviews};
+(tabs[currentAdminTab]||renderAdminDashboard)(el);
+}
+
+function renderAdminDashboard(el){
+const products=getStore('products',[]),orders=getStore('orders',[]),users=getStore('users',[]),reviews=getStore('reviews',[]);
+const totalSales=orders.reduce((s,o)=>s+o.total,0);
+const sizeCount={};orders.forEach(o=>o.items.forEach(i=>{sizeCount[i.size]=(sizeCount[i.size]||0)+i.qty}));
+const sizeEntries=Object.entries(sizeCount).sort((a,b)=>b[1]-a[1]).slice(0,10);
+const maxSV=Math.max(...sizeEntries.map(e=>e[1]),1);
+const best=products.slice().sort((a,b)=>b.sales-a.sales).slice(0,5);
+el.innerHTML=`<h2 style="margin-bottom:24px;font-weight:800">📊 داشبورد</h2>
+<div class="admin-stats">
+<div class="stat-card"><div class="stat-icon">💰</div><div class="stat-num">${formatPrice(totalSales)}</div><div class="stat-label">کل فروش</div></div>
+<div class="stat-card"><div class="stat-icon">🛍️</div><div class="stat-num">${toPersianNum(orders.length)}</div><div class="stat-label">سفارشات</div></div>
+<div class="stat-card"><div class="stat-icon">👥</div><div class="stat-num">${toPersianNum(users.length)}</div><div class="stat-label">کاربران</div></div>
+<div class="stat-card"><div class="stat-icon">📦</div><div class="stat-num">${toPersianNum(products.length)}</div><div class="stat-label">محصولات</div></div>
+<div class="stat-card"><div class="stat-icon">⭐</div><div class="stat-num">${toPersianNum(reviews.length)}</div><div class="stat-label">نظرات</div></div>
+</div>
+<h3 style="margin-bottom:16px;font-weight:700">📊 محبوب‌ترین سایزها</h3>
+<div class="chart-bar-container" style="margin-bottom:32px;padding-bottom:40px">
+${sizeEntries.length?sizeEntries.map(([s,v])=>`<div class="chart-bar" style="height:${(v/maxSV)*100}%"><span class="chart-bar-val">${toPersianNum(v)}</span><span class="chart-bar-label">${s}</span></div>`).join(''):'<p style="text-align:center;width:100%;color:#999">داده‌ای موجود نیست</p>'}
+</div>
+<h3 style="margin-bottom:16px;font-weight:700">🏆 پرفروش‌ترین محصولات</h3>
+<table class="admin-table"><tr><th>محصول</th><th>دسته‌بندی</th><th>رنگ</th><th>قیمت</th><th>فروش</th></tr>
+${best.map(p=>`<tr><td>${p.name}</td><td>${p.category}</td><td><span class="color-dot" style="background:${p.colorHex};width:16px;height:16px;vertical-align:middle"></span> ${p.color}</td><td>${formatPrice(p.price)}</td><td>${toPersianNum(p.sales)}</td></tr>`).join('')}
+</table>`}
+
+function renderAdminProducts(el){
+const products=getStore('products',[]);
+el.innerHTML=`<h2 style="margin-bottom:24px;font-weight:800">📦 مدیریت محصولات</h2>
+<button class="admin-btn admin-btn-add" onclick="showAddProductForm()">+ افزودن محصول جدید</button>
+<div id="adminProductForm"></div>
+<table class="admin-table"><tr><th>تصویر</th><th>نام</th><th>دسته</th><th>رنگ</th><th>قیمت</th><th>فروش</th><th>عملیات</th></tr>
+${products.map(p=>`<tr><td><img src="${p.img}" style="width:50px;height:50px;border-radius:6px;object-fit:cover" onerror="this.src='https://picsum.photos/seed/${p.id}/50/50'"></td><td>${p.name}</td><td>${p.category}</td><td><span class="color-dot" style="background:${p.colorHex};width:14px;height:14px;vertical-align:middle"></span> ${p.color}</td><td>${formatPrice(p.price)}</td><td>${toPersianNum(p.sales)}</td><td><button class="admin-btn admin-btn-edit" onclick="editProduct('${p.id}')">ویرایش</button> <button class="admin-btn admin-btn-delete" onclick="deleteProduct('${p.id}')">حذف</button></td></tr>`).join('')}</table>`}
+
+function showAddProductForm(editP=null){
+const e=!!editP;const f=document.getElementById('adminProductForm');
+f.innerHTML=`<div class="admin-form"><h3 style="margin-bottom:16px">${e?'ویرایش محصول':'افزودن محصول جدید'}</h3>
+<div class="form-row"><div class="form-group"><label>نام محصول</label><input type="text" id="apName" value="${e?editP.name:''}"></div><div class="form-group"><label>دسته‌بندی</label><select id="apCategory"><option value="کفش" ${e&&editP.category==='کفش'?'selected':''}>کفش</option><option value="لباس" ${e&&editP.category==='لباس'?'selected':''}>لباس</option><option value="کیف" ${e&&editP.category==='کیف'?'selected':''}>کیف</option></select></div></div>
+<div class="form-row"><div class="form-group"><label>قیمت (تومان)</label><input type="number" id="apPrice" value="${e?editP.price:''}"></div><div class="form-group"><label>قیمت قبلی</label><input type="number" id="apOldPrice" value="${e?editP.oldPrice:''}"></div></div>
+<div class="form-row"><div class="form-group"><label>رنگ</label><input type="text" id="apColor" value="${e?editP.color:''}"></div><div class="form-group"><label>کد رنگ (Hex)</label><div style="display:flex;gap:8px;align-items:center"><input type="color" id="apColorHex" value="${e?editP.colorHex:'#333333'}" style="width:50px;height:36px;border:none;cursor:pointer"><input type="text" id="apColorHexText" value="${e?editP.colorHex:'#333333'}" style="flex:1;padding:8px;border:1px solid var(--border);border-radius:6px;font-family:monospace" oninput="document.getElementById('apColorHex').value=this.value"></div></div></div>
+<div class="form-row"><div class="form-group"><label>لینک تصویر</label><input type="text" id="apImg" value="${e?editP.img:''}"></div></div>
+<div class="form-group"><label>توضیح کوتاه</label><input type="text" id="apShortDesc" value="${e?editP.shortDesc:''}"></div>
+<div class="form-group"><label>توضیح کامل</label><textarea id="apLongDesc" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;min-height:80px">${e?editP.longDesc:''}</textarea></div>
+<div class="form-group"><label>سایزها و موجودی (مثال: S:10,M:20,L:15)</label><input type="text" id="apSizes" value="${e?Object.entries(editP.sizes).map(([s,q])=>s+':'+q).join(','):''}"></div>
+<button class="form-btn" onclick="${e?`saveEditProduct('${editP.id}')`:'saveNewProduct()'}" style="max-width:200px">${e?'ذخیره تغییرات':'ذخیره محصول'}</button>
+<button class="admin-btn" onclick="document.getElementById('adminProductForm').innerHTML=''" style="margin-right:8px;background:#eee;padding:10px 24px;border-radius:8px">لغو</button></div>`}
+
+function saveNewProduct(){
+const name=document.getElementById('apName').value.trim(),cat=document.getElementById('apCategory').value,price=parseInt(document.getElementById('apPrice').value)||0,oldPrice=parseInt(document.getElementById('apOldPrice').value)||price;
+const color=document.getElementById('apColor').value.trim()||'مشکی',colorHex=document.getElementById('apColorHex').value||'#333';
+const img=document.getElementById('apImg').value.trim()||'https://picsum.photos/seed/new'+Date.now()+'/600/600';
+const shortDesc=document.getElementById('apShortDesc').value.trim(),longDesc=document.getElementById('apLongDesc').value.trim();
+const sizesStr=document.getElementById('apSizes').value.trim();
+if(!name||!price){showToast('نام و قیمت الزامی است','error');return}
+const sizes={};if(sizesStr)sizesStr.split(',').forEach(s=>{const[k,v]=s.split(':');if(k)sizes[k.trim()]=parseInt(v)||0});else sizes['فری']=10;
+const products=getStore('products',[]);products.push({id:generateId(),name,category:cat,price,oldPrice,sizes,color,colorHex,shortDesc,longDesc,img,rating:4.0,sales:0});
+setStore('products',products);showToast('محصول اضافه شد','success');renderAdminProducts(document.getElementById('adminContent'));
+}
+function editProduct(id){const p=getStore('products',[]).find(x=>x.id===id);if(p)showAddProductForm(p)}
+function saveEditProduct(id){
+const products=getStore('products',[]);const p=products.find(x=>x.id===id);if(!p)return;
+p.name=document.getElementById('apName').value.trim()||p.name;p.category=document.getElementById('apCategory').value;
+p.price=parseInt(document.getElementById('apPrice').value)||p.price;p.oldPrice=parseInt(document.getElementById('apOldPrice').value)||p.oldPrice;
+p.color=document.getElementById('apColor').value.trim()||p.color;p.colorHex=document.getElementById('apColorHex').value||p.colorHex;
+p.img=document.getElementById('apImg').value.trim()||p.img;p.shortDesc=document.getElementById('apShortDesc').value.trim()||p.shortDesc;
+p.longDesc=document.getElementById('apLongDesc').value.trim()||p.longDesc;
+const sz=document.getElementById('apSizes').value.trim();if(sz){p.sizes={};sz.split(',').forEach(s=>{const[k,v]=s.split(':');if(k)p.sizes[k.trim()]=parseInt(v)||0})}
+setStore('products',products);showToast('محصول ویرایش شد','success');renderAdminProducts(document.getElementById('adminContent'));
+}
+function deleteProduct(id){if(!confirm('حذف محصول؟'))return;setStore('products',getStore('products',[]).filter(p=>p.id!==id));showToast('محصول حذف شد','success');renderAdminProducts(document.getElementById('adminContent'))}
+
+function renderAdminOrders(el){
+const orders=getStore('orders',[]);
+el.innerHTML=`<h2 style="margin-bottom:24px;font-weight:800">🛍️ مدیریت سفارشات</h2>
+${!orders.length?'<p style="color:#999">سفارشی نیست</p>':orders.slice().reverse().map(o=>`<div class="order-card">
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px"><h4>سفارش ${o.id.substr(0,8)} - ${o.user}</h4><span class="order-status ${o.status}">${o.status==='pending'?'در انتظار':'تکمیل شده'}</span></div>
+<p style="font-size:13px;color:#999;margin:4px 0">${new Date(o.date).toLocaleDateString('fa-IR')}</p>
+<p style="font-size:14px;margin:4px 0">${o.items.map(i=>i.name+' ('+i.size+(i.color?' - '+i.color:'')+' × '+toPersianNum(i.qty)+')').join(' | ')}</p>
+<p style="font-weight:700;margin-top:8px">مبلغ: ${formatPrice(o.total)} ${o.discountCode?'(کد: '+o.discountCode+')':''}</p>
+<button class="admin-btn admin-btn-edit" style="margin-top:8px" onclick="toggleOrderStatus('${o.id}')">${o.status==='pending'?'تکمیل':'برگشت'}</button></div>`).join('')}`}
+function toggleOrderStatus(oid){const orders=getStore('orders',[]);const o=orders.find(x=>x.id===oid);if(o){o.status=o.status==='pending'?'completed':'pending';setStore('orders',orders);renderAdminOrders(document.getElementById('adminContent'));showToast('وضعیت تغییر کرد','success')}}
+
+function renderAdminDiscounts(el){
+const discs=getStore('discounts',[]);
+el.innerHTML=`<h2 style="margin-bottom:24px;font-weight:800">🎫 کدهای تخفیف</h2>
+<button class="admin-btn admin-btn-add" onclick="showAddDiscountForm()">+ کد تخفیف جدید</button><div id="adminDiscountForm"></div>
+<table class="admin-table"><tr><th>کد</th><th>درصد</th><th>انقضا</th><th>محدودیت</th><th>استفاده</th><th>وضعیت</th><th>عملیات</th></tr>
+${discs.map(d=>`<tr><td style="font-weight:700">${d.code}</td><td>${toPersianNum(d.percent)}٪</td><td>${d.expiry}</td><td>${toPersianNum(d.usageLimit)}</td><td>${toPersianNum(d.usedCount)}</td><td><span style="color:${d.active?'green':'red'}">${d.active?'فعال':'غیرفعال'}</span></td><td><button class="admin-btn admin-btn-edit" onclick="toggleDiscActive('${d.id}')">${d.active?'غیرفعال':'فعال'}</button> <button class="admin-btn admin-btn-delete" onclick="deleteDiscount('${d.id}')">حذف</button></td></tr>`).join('')}</table>`}
+function showAddDiscountForm(){document.getElementById('adminDiscountForm').innerHTML=`<div class="admin-form"><h3 style="margin-bottom:16px">کد تخفیف جدید</h3><div class="form-row"><div class="form-group"><label>کد</label><input type="text" id="adCode" placeholder="SAVE20"></div><div class="form-group"><label>درصد</label><input type="number" id="adPercent" min="1" max="90"></div></div><div class="form-row"><div class="form-group"><label>انقضا</label><input type="date" id="adExpiry"></div><div class="form-group"><label>حداکثر استفاده</label><input type="number" id="adLimit"></div></div><button class="form-btn" onclick="saveNewDiscount()" style="max-width:200px">ذخیره</button></div>`}
+function saveNewDiscount(){const code=document.getElementById('adCode').value.trim().toUpperCase(),pct=parseInt(document.getElementById('adPercent').value)||0,exp=document.getElementById('adExpiry').value,lim=parseInt(document.getElementById('adLimit').value)||100;if(!code||!pct||!exp){showToast('فیلدها را پر کنید','error');return}const d=getStore('discounts',[]);d.push({id:generateId(),code,percent:pct,expiry:exp,usageLimit:lim,usedCount:0,active:true});setStore('discounts',d);showToast('کد اضافه شد','success');renderAdminDiscounts(document.getElementById('adminContent'))}
+function toggleDiscActive(did){const d=getStore('discounts',[]);const x=d.find(i=>i.id===did);if(x){x.active=!x.active;setStore('discounts',d);renderAdminDiscounts(document.getElementById('adminContent'))}}
+function deleteDiscount(did){if(!confirm('حذف؟'))return;setStore('discounts',getStore('discounts',[]).filter(d=>d.id!==did));renderAdminDiscounts(document.getElementById('adminContent'))}
+
+function renderAdminInventory(el){
+const products=getStore('products',[]);
+el.innerHTML=`<h2 style="margin-bottom:24px;font-weight:800">📋 موجودی انبار</h2>
+<table class="admin-table"><tr><th>محصول</th><th>دسته</th><th>رنگ</th><th>سایز و موجودی</th><th>کل</th><th>ویرایش</th></tr>
+${products.map(p=>{const total=Object.values(p.sizes).reduce((s,v)=>s+v,0);
+return`<tr><td>${p.name}</td><td>${p.category}</td><td><span class="color-dot" style="background:${p.colorHex};width:14px;height:14px;vertical-align:middle"></span> ${p.color}</td><td>${Object.entries(p.sizes).map(([s,q])=>`<span style="display:inline-block;margin:2px;padding:2px 8px;background:${q>0?'#e8f5e9':'#fce4ec'};border-radius:4px;font-size:12px">${s}: ${toPersianNum(q)}</span>`).join('')}</td><td style="font-weight:700;color:${total>0?'green':'red'}">${toPersianNum(total)}</td><td><button class="admin-btn admin-btn-edit" onclick="editProduct('${p.id}')">ویرایش</button></td></tr>`}).join('')}</table>`}
+
+function renderAdminUsers(el){
+const users=getStore('users',[]);
+el.innerHTML=`<h2 style="margin-bottom:24px;font-weight:800">👥 کاربران (${toPersianNum(users.length)})</h2>
+<table class="admin-table"><tr><th>نام</th><th>نام کاربری</th><th>ایمیل</th><th>تاریخ</th></tr>
+${users.map(u=>`<tr><td>${u.name}</td><td>${u.username}</td><td>${u.email}</td><td>${u.createdAt?new Date(u.createdAt).toLocaleDateString('fa-IR'):'-'}</td></tr>`).join('')}</table>
+${!users.length?'<p style="color:#999;margin-top:16px">کاربری نیست</p>':''}`}
+
+// ============ ADMIN: COLORS ============
+function renderAdminColors(el){
+const c=getStore('adminColors',{});
+el.innerHTML=`<h2 style="margin-bottom:24px;font-weight:800">🎨 تنظیمات ظاهری</h2>
+<p style="color:var(--text-light);margin-bottom:20px">رنگ‌های سایت را با استفاده از کد Hex تغییر دهید:</p>
+<div class="color-picker-grid">
+${[{key:'primary',label:'رنگ اصلی',val:c.primary||'#1a1a2e'},{key:'gold',label:'رنگ طلایی',val:c.gold||'#d4a574'},{key:'accent',label:'رنگ تأکیدی',val:c.accent||'#e94560'},{key:'btnPrimary',label:'رنگ دکمه‌ها',val:c.btnPrimary||'#1a1a2e'},{key:'bg',label:'رنگ پس‌زمینه',val:c.bg||'#fafafa'},{key:'catShoe',label:'رنگ دسته کفش',val:c.catShoe||'#667eea'},{key:'catCloth',label:'رنگ دسته لباس',val:c.catCloth||'#f093fb'},{key:'catBag',label:'رنگ دسته کیف',val:c.catBag||'#4facfe'}].map(item=>`
+<div class="color-picker-card">
+<label>${item.label}</label>
+<input type="color" id="ac_${item.key}" value="${item.val}" onchange="document.getElementById('ach_${item.key}').value=this.value">
+<input type="text" class="hex-input" id="ach_${item.key}" value="${item.val}" oninput="document.getElementById('ac_${item.key}').value=this.value">
+</div>`).join('')}
+</div>
+<div style="display:flex;gap:12px">
+<button class="form-btn" onclick="saveAdminColors()" style="max-width:200px">💾 ذخیره تنظیمات</button>
+<button class="admin-btn" onclick="resetAdminColors()" style="background:#fce4ec;color:#c62828;padding:12px 24px;border-radius:8px">↩ بازنشانی</button>
+</div>`}
+
+function saveAdminColors(){
+const keys=['primary','gold','accent','btnPrimary','bg','catShoe','catCloth','catBag'];
+const c={};keys.forEach(k=>c[k]=document.getElementById('ac_'+k).value);
+setStore('adminColors',c);applyCustomColors();showToast('تنظیمات ذخیره شد 🎨','success');
+}
+function resetAdminColors(){
+const def={primary:'#1a1a2e',gold:'#d4a574',accent:'#e94560',btnPrimary:'#1a1a2e',bg:'#fafafa',catShoe:'#667eea',catCloth:'#f093fb',catBag:'#4facfe'};
+setStore('adminColors',def);applyCustomColors();showToast('بازنشانی شد','info');renderAdminColors(document.getElementById('adminContent'));
+}
+
+// ============ ADMIN: SALES STATS ============
+function renderAdminSalesStats(el){
+const orders=getStore('orders',[]),products=getStore('products',[]);
+// Sales by color
+const colorSales={};orders.forEach(o=>o.items.forEach(i=>{const p=products.find(x=>x.id===i.productId);if(p){colorSales[p.color]=(colorSales[p.color]||0)+i.qty}}));
+const colorEntries=Object.entries(colorSales).sort((a,b)=>b[1]-a[1]);
+// Sales by size
+const sizeSales={};orders.forEach(o=>o.items.forEach(i=>{sizeSales[i.size]=(sizeSales[i.size]||0)+i.qty}));
+const sizeEntries=Object.entries(sizeSales).sort((a,b)=>b[1]-a[1]);
+const maxSz=Math.max(...sizeEntries.map(e=>e[1]),1);
+// Sales by category
+const catSales={};orders.forEach(o=>o.items.forEach(i=>{const p=products.find(x=>x.id===i.productId);if(p){catSales[p.category]=(catSales[p.category]||0)+i.qty}}));
+const catEntries=Object.entries(catSales).sort((a,b)=>b[1]-a[1]);
+const totalCat=catEntries.reduce((s,e)=>s+e[1],0)||1;
+const catColors={'کفش':'#667eea','لباس':'#f093fb','کیف':'#4facfe'};
+
+el.innerHTML=`<h2 style="margin-bottom:24px;font-weight:800">📈 آمار تفصیلی فروش</h2>
+<h3 style="margin-bottom:16px;font-weight:700">فروش بر اساس دسته‌بندی</h3>
+<div class="pie-chart-container">
+<div class="pie-chart" style="background:conic-gradient(${catEntries.map((e,i)=>{const start=catEntries.slice(0,i).reduce((s,x)=>s+x[1]/totalCat*100,0);const end=start+e[1]/totalCat*100;return`${catColors[e[0]]||'#999'} ${start}% ${end}%`}).join(',')})"></div>
+<div class="pie-legend">${catEntries.map(([c,v])=>`<div class="pie-legend-item"><span class="pie-legend-dot" style="background:${catColors[c]||'#999'}"></span>${c}: ${toPersianNum(v)} عدد (${toPersianNum(Math.round(v/totalCat*100))}٪)</div>`).join('')}</div>
+</div>
+<h3 style="margin-bottom:16px;font-weight:700">فروش بر اساس رنگ</h3>
+<table class="admin-table" style="margin-bottom:32px"><tr><th>رنگ</th><th>تعداد فروش</th><th>نمودار</th></tr>
+${colorEntries.map(([c,v])=>{const max=colorEntries[0]?.[1]||1;return`<tr><td>${c}</td><td>${toPersianNum(v)}</td><td><div style="background:var(--gold);height:20px;border-radius:4px;width:${v/max*100}%;min-width:4px;transition:width .5s ease"></div></td></tr>`}).join('')}
+</table>
+<h3 style="margin-bottom:16px;font-weight:700">فروش بر اساس سایز</h3>
+<div class="chart-bar-container" style="padding-bottom:40px">
+${sizeEntries.length?sizeEntries.slice(0,12).map(([s,v])=>`<div class="chart-bar" style="height:${(v/maxSz)*100}%;background:linear-gradient(to top,var(--accent2),#5dade2)"><span class="chart-bar-val">${toPersianNum(v)}</span><span class="chart-bar-label">${s}</span></div>`).join(''):'<p style="text-align:center;width:100%;color:#999">داده‌ای نیست</p>'}
+</div>`}
+
+// ============ ADMIN: SECURITY ============
+function renderAdminSecurity(el){
+const settings=getStore('admin2fa',{enabled:true});
+const log=getStore('securityLog',[]);
+const failedAttempts=log.filter(l=>l.msg.includes('ناموفق')).length;
+el.innerHTML=`<h2 style="margin-bottom:24px;font-weight:800">🔒 امنیت</h2>
+${failedAttempts>0?`<div class="security-alert danger"><span class="alert-icon">⚠️</span><span class="alert-text">${toPersianNum(failedAttempts)} تلاش ناموفق ورود ثبت شده است</span></div>`:''}
+<div class="security-alert success"><span class="alert-icon">✅</span><span class="alert-text">سیستم احراز هویت دو مرحله‌ای ${settings.enabled?'فعال':'غیرفعال'} است</span></div>
+<div class="admin-form" style="margin-bottom:24px">
+<h3 style="margin-bottom:16px">تنظیمات احراز هویت دو مرحله‌ای</h3>
+<div style="display:flex;align-items:center;gap:16px">
+<label class="toggle-switch"><input type="checkbox" ${settings.enabled?'checked':''} onchange="toggle2FA(this.checked)"><span class="toggle-slider"></span></label>
+<span style="font-weight:600">${settings.enabled?'فعال':'غیرفعال'}</span>
+</div>
+<p style="color:var(--text-light);font-size:13px;margin-top:8px">با فعال بودن این گزینه، هنگام ورود مدیر یک کد ۶ رقمی نمایش داده می‌شود.</p>
+</div>
+<h3 style="margin-bottom:16px;font-weight:700">گزارش امنیتی</h3>
+<table class="admin-table"><tr><th>رویداد</th><th>تاریخ</th></tr>
+${log.slice(0,20).map(l=>`<tr><td>${l.msg}</td><td>${new Date(l.date).toLocaleString('fa-IR')}</td></tr>`).join('')}
+</table>
+${!log.length?'<p style="color:#999;margin-top:12px">رویدادی ثبت نشده</p>':''}`}
+
+function toggle2FA(enabled){setStore('admin2fa',{enabled});showToast(enabled?'احراز هویت دو مرحله‌ای فعال شد 🔐':'غیرفعال شد','info');renderAdminSecurity(document.getElementById('adminContent'))}
+
+// ============ ADMIN: REVIEWS ============
+function renderAdminReviews(el){
+const reviews=getStore('reviews',[]);const products=getStore('products',[]);
+el.innerHTML=`<h2 style="margin-bottom:24px;font-weight:800">⭐ نظرات کاربران (${toPersianNum(reviews.length)})</h2>
+${!reviews.length?'<p style="color:#999">نظری ثبت نشده</p>':
+`<table class="admin-table"><tr><th>کاربر</th><th>محصول</th><th>امتیاز</th><th>نظر</th><th>تاریخ</th><th>عملیات</th></tr>
+${reviews.slice().reverse().map(r=>{const p=products.find(x=>x.id===r.productId);return`<tr><td>${r.user}</td><td>${p?p.name:'نامشخص'}</td><td style="color:var(--gold)">${renderStars(r.rating)}</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.text}</td><td>${new Date(r.date).toLocaleDateString('fa-IR')}</td><td><button class="admin-btn admin-btn-delete" onclick="deleteReview('${r.id}')">حذف</button></td></tr>`}).join('')}
+</table>`}`}
+
+function deleteReview(rid){
+if(!confirm('حذف نظر؟'))return;
+setStore('reviews',getStore('reviews',[]).filter(r=>r.id!==rid));
+showToast('نظر حذف شد','success');renderAdminReviews(document.getElementById('adminContent'));
+}
+
+// ============ INIT ============
+initData();
+applyCustomColors();
+updateUI();
+renderHome();
+</script>
+</body>
+</html>
